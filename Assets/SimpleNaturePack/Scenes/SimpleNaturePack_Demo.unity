@@ -3165,7 +3165,7 @@ GameObject:
   - component: {fileID: 902934773}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3228,13 +3228,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 902934772}
-  m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
-  m_LocalPosition: {x: 8.7, y: 253.5, z: -205.5}
+  m_LocalRotation: {x: 0.37347928, y: 0.000000089406974, z: 0.000000029802326, w: 0.92763853}
+  m_LocalPosition: {x: 2.2000046, y: 225, z: -234.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1274309784}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 43.861004, y: 0, z: 0}
 --- !u!1001 &914714163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4094,14 +4094,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d93566d76fc834196ca4cd132a644d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 0.5
-  _movementTime: 1
-  _rotationAmount: 1
-  _newPosition: {x: 0, y: 0, z: 0}
-  _newRotation: {x: 0, y: 0, z: 0, w: 0}
   _cameraTransform: {fileID: 902934775}
   _zoomAmount: {x: 0, y: -10, z: 10}
-  _newZoom: {x: 0, y: 0, z: 0}
 --- !u!1001 &1280485125
 PrefabInstance:
   m_ObjectHideFlags: 0
