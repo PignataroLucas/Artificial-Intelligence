@@ -1,323 +1,953 @@
 fileFormatVersion: 2
 guid: 06033faff6ed98c4292f7a342b048834
 ModelImporter:
-  serializedVersion: 22
-  fileIDToRecycleName:
-    100000: Boroda
-    100002: Boroda.001
-    100004: Boroda.002
-    100006: Boroda.003
-    100008: Boroda.004
-    100010: Boroda.004_end
-    100012: //RootNode
-    100014: f_index.01.L
-    100016: f_index.01.R
-    100018: f_index.02.L
-    100020: f_index.02.R
-    100022: f_index.03.L
-    100024: f_index.03.L_end
-    100026: f_index.03.R
-    100028: f_index.03.R_end
-    100030: f_middle.01.L
-    100032: f_middle.01.R
-    100034: f_middle.02.L
-    100036: f_middle.02.R
-    100038: f_middle.03.L
-    100040: f_middle.03.L_end
-    100042: f_middle.03.R
-    100044: f_middle.03.R_end
-    100046: f_pinky.01.L
-    100048: f_pinky.01.R
-    100050: f_pinky.02.L
-    100052: f_pinky.02.R
-    100054: f_pinky.03.L
-    100056: f_pinky.03.L_end
-    100058: f_pinky.03.R
-    100060: f_pinky.03.R_end
-    100062: f_ring.01.L
-    100064: f_ring.01.R
-    100066: f_ring.02.L
-    100068: f_ring.02.R
-    100070: f_ring.03.L
-    100072: f_ring.03.L_end
-    100074: f_ring.03.R
-    100076: f_ring.03.R_end
-    100078: face
-    100080: Flagka
-    100082: Flagka_end
-    100084: foot.L
-    100086: foot.L.001
-    100088: foot.L.001_end
-    100090: foot.R
-    100092: foot.R.001
-    100094: foot.R.001_end
-    100096: forearm.L
-    100098: forearm.L.001
-    100100: forearm.L.001_end
-    100102: forearm.R
-    100104: forearm.R.001
-    100106: forearm.R.001_end
-    100108: Glaz
-    100110: Glaz.001
-    100112: Glaz.001_end
-    100114: Glaz_end
-    100116: 'Hamer Dwarf Master '
-    100118: hand.L
-    100120: hand.R
-    100122: Hvost
-    100124: Hvost.001
-    100126: Hvost.002
-    100128: Hvost.003
-    100130: Hvost.004
-    100132: Hvost.004_end
-    100134: Master Dwarf
-    100136: metarig
-    100138: Napl.L
-    100140: Napl.L.001
-    100142: Napl.L.001_end
-    100144: Napl.R
-    100146: Napl.R_end
-    100148: root
-    100150: Rub.L
-    100152: Rub.L.001
-    100154: Rub.L.001_end
-    100156: Rub.L.002
-    100158: Rub.L.002_end
-    100160: Rub.L_end
-    100162: Rub.R
-    100164: Rub.R.001
-    100166: Rub.R.001_end
-    100168: Rub.R.002
-    100170: Rub.R.002_end
-    100172: Rub.R_end
-    100174: Rubaha.L
-    100176: Rubaha.L.001
-    100178: Rubaha.L.001_end
-    100180: Rubaha.L.002
-    100182: Rubaha.L.002_end
-    100184: Rubaha.L.003
-    100186: Rubaha.L.003_end
-    100188: Rubaha.L_end
-    100190: Rubaha.R
-    100192: Rubaha.R.001
-    100194: Rubaha.R.001_end
-    100196: Rubaha.R.002
-    100198: Rubaha.R.002_end
-    100200: Rubaha.R.003
-    100202: Rubaha.R.003_end
-    100204: Rubaha.R_end
-    100206: RUN
-    100208: shin.L
-    100210: shin.L.001
-    100212: shin.L.001_end
-    100214: shin.R
-    100216: shin.R.001
-    100218: shin.R.001_end
-    100220: shoulder.L
-    100222: shoulder.R
-    100224: spine
-    100226: spine.002
-    100228: spine.003
-    100230: spine.004
-    100232: thigh.L
-    100234: thigh.R
-    100236: thumb.01.L
-    100238: thumb.01.R
-    100240: thumb.02.L
-    100242: thumb.02.R
-    100244: thumb.03.L
-    100246: thumb.03.L_end
-    100248: thumb.03.R
-    100250: thumb.03.R_end
-    100252: toe.L
-    100254: toe.L_end
-    100256: toe.R
-    100258: toe.R_end
-    100260: upper_arm.L
-    100262: upper_arm.R
-    100264: Us.L
-    100266: Us.L.001
-    100268: Us.L.002
-    100270: Us.L.003
-    100272: Us.L.004
-    100274: Us.L.004_end
-    100276: Us.R
-    100278: Us.R.001
-    100280: Us.R.002
-    100282: Us.R.003
-    100284: Us.R.004
-    100286: Us.R.004_end
-    100288: Weapon
-    100290: Weapon_end
-    400000: Boroda
-    400002: Boroda.001
-    400004: Boroda.002
-    400006: Boroda.003
-    400008: Boroda.004
-    400010: Boroda.004_end
-    400012: //RootNode
-    400014: f_index.01.L
-    400016: f_index.01.R
-    400018: f_index.02.L
-    400020: f_index.02.R
-    400022: f_index.03.L
-    400024: f_index.03.L_end
-    400026: f_index.03.R
-    400028: f_index.03.R_end
-    400030: f_middle.01.L
-    400032: f_middle.01.R
-    400034: f_middle.02.L
-    400036: f_middle.02.R
-    400038: f_middle.03.L
-    400040: f_middle.03.L_end
-    400042: f_middle.03.R
-    400044: f_middle.03.R_end
-    400046: f_pinky.01.L
-    400048: f_pinky.01.R
-    400050: f_pinky.02.L
-    400052: f_pinky.02.R
-    400054: f_pinky.03.L
-    400056: f_pinky.03.L_end
-    400058: f_pinky.03.R
-    400060: f_pinky.03.R_end
-    400062: f_ring.01.L
-    400064: f_ring.01.R
-    400066: f_ring.02.L
-    400068: f_ring.02.R
-    400070: f_ring.03.L
-    400072: f_ring.03.L_end
-    400074: f_ring.03.R
-    400076: f_ring.03.R_end
-    400078: face
-    400080: Flagka
-    400082: Flagka_end
-    400084: foot.L
-    400086: foot.L.001
-    400088: foot.L.001_end
-    400090: foot.R
-    400092: foot.R.001
-    400094: foot.R.001_end
-    400096: forearm.L
-    400098: forearm.L.001
-    400100: forearm.L.001_end
-    400102: forearm.R
-    400104: forearm.R.001
-    400106: forearm.R.001_end
-    400108: Glaz
-    400110: Glaz.001
-    400112: Glaz.001_end
-    400114: Glaz_end
-    400116: 'Hamer Dwarf Master '
-    400118: hand.L
-    400120: hand.R
-    400122: Hvost
-    400124: Hvost.001
-    400126: Hvost.002
-    400128: Hvost.003
-    400130: Hvost.004
-    400132: Hvost.004_end
-    400134: Master Dwarf
-    400136: metarig
-    400138: Napl.L
-    400140: Napl.L.001
-    400142: Napl.L.001_end
-    400144: Napl.R
-    400146: Napl.R_end
-    400148: root
-    400150: Rub.L
-    400152: Rub.L.001
-    400154: Rub.L.001_end
-    400156: Rub.L.002
-    400158: Rub.L.002_end
-    400160: Rub.L_end
-    400162: Rub.R
-    400164: Rub.R.001
-    400166: Rub.R.001_end
-    400168: Rub.R.002
-    400170: Rub.R.002_end
-    400172: Rub.R_end
-    400174: Rubaha.L
-    400176: Rubaha.L.001
-    400178: Rubaha.L.001_end
-    400180: Rubaha.L.002
-    400182: Rubaha.L.002_end
-    400184: Rubaha.L.003
-    400186: Rubaha.L.003_end
-    400188: Rubaha.L_end
-    400190: Rubaha.R
-    400192: Rubaha.R.001
-    400194: Rubaha.R.001_end
-    400196: Rubaha.R.002
-    400198: Rubaha.R.002_end
-    400200: Rubaha.R.003
-    400202: Rubaha.R.003_end
-    400204: Rubaha.R_end
-    400206: RUN
-    400208: shin.L
-    400210: shin.L.001
-    400212: shin.L.001_end
-    400214: shin.R
-    400216: shin.R.001
-    400218: shin.R.001_end
-    400220: shoulder.L
-    400222: shoulder.R
-    400224: spine
-    400226: spine.002
-    400228: spine.003
-    400230: spine.004
-    400232: thigh.L
-    400234: thigh.R
-    400236: thumb.01.L
-    400238: thumb.01.R
-    400240: thumb.02.L
-    400242: thumb.02.R
-    400244: thumb.03.L
-    400246: thumb.03.L_end
-    400248: thumb.03.R
-    400250: thumb.03.R_end
-    400252: toe.L
-    400254: toe.L_end
-    400256: toe.R
-    400258: toe.R_end
-    400260: upper_arm.L
-    400262: upper_arm.R
-    400264: Us.L
-    400266: Us.L.001
-    400268: Us.L.002
-    400270: Us.L.003
-    400272: Us.L.004
-    400274: Us.L.004_end
-    400276: Us.R
-    400278: Us.R.001
-    400280: Us.R.002
-    400282: Us.R.003
-    400284: Us.R.004
-    400286: Us.R.004_end
-    400288: Weapon
-    400290: Weapon_end
-    2100000: Material Hamer Dwarf Master_
-    2100002: Material Master Dwarf
-    4300000: 'Hamer Dwarf Master '
-    4300002: Master Dwarf
-    7400000: ' All Animation'
-    7400002: Idle (1)
-    7400004: Idle (2)
-    7400006: Idle (3)
-    7400008: Idle (4)
-    7400010: Walk
-    7400012: Run
-    7400014: Combat_run
-    7400016: Death (1)
-    7400018: Death (2)
-    7400020: Attack (1)
-    7400022: Attack (2)
-    7400024: Attack (3)
-    7400026: Attack (4)
-    7400028: Attack (5)
-    7400030: Combat -Idle
-    9500000: //RootNode
-    13700000: 'Hamer Dwarf Master '
-    13700002: Master Dwarf
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Boroda
+  - first:
+      1: 100002
+    second: Boroda.001
+  - first:
+      1: 100004
+    second: Boroda.002
+  - first:
+      1: 100006
+    second: Boroda.003
+  - first:
+      1: 100008
+    second: Boroda.004
+  - first:
+      1: 100010
+    second: Boroda.004_end
+  - first:
+      1: 100012
+    second: //RootNode
+  - first:
+      1: 100014
+    second: f_index.01.L
+  - first:
+      1: 100016
+    second: f_index.01.R
+  - first:
+      1: 100018
+    second: f_index.02.L
+  - first:
+      1: 100020
+    second: f_index.02.R
+  - first:
+      1: 100022
+    second: f_index.03.L
+  - first:
+      1: 100024
+    second: f_index.03.L_end
+  - first:
+      1: 100026
+    second: f_index.03.R
+  - first:
+      1: 100028
+    second: f_index.03.R_end
+  - first:
+      1: 100030
+    second: f_middle.01.L
+  - first:
+      1: 100032
+    second: f_middle.01.R
+  - first:
+      1: 100034
+    second: f_middle.02.L
+  - first:
+      1: 100036
+    second: f_middle.02.R
+  - first:
+      1: 100038
+    second: f_middle.03.L
+  - first:
+      1: 100040
+    second: f_middle.03.L_end
+  - first:
+      1: 100042
+    second: f_middle.03.R
+  - first:
+      1: 100044
+    second: f_middle.03.R_end
+  - first:
+      1: 100046
+    second: f_pinky.01.L
+  - first:
+      1: 100048
+    second: f_pinky.01.R
+  - first:
+      1: 100050
+    second: f_pinky.02.L
+  - first:
+      1: 100052
+    second: f_pinky.02.R
+  - first:
+      1: 100054
+    second: f_pinky.03.L
+  - first:
+      1: 100056
+    second: f_pinky.03.L_end
+  - first:
+      1: 100058
+    second: f_pinky.03.R
+  - first:
+      1: 100060
+    second: f_pinky.03.R_end
+  - first:
+      1: 100062
+    second: f_ring.01.L
+  - first:
+      1: 100064
+    second: f_ring.01.R
+  - first:
+      1: 100066
+    second: f_ring.02.L
+  - first:
+      1: 100068
+    second: f_ring.02.R
+  - first:
+      1: 100070
+    second: f_ring.03.L
+  - first:
+      1: 100072
+    second: f_ring.03.L_end
+  - first:
+      1: 100074
+    second: f_ring.03.R
+  - first:
+      1: 100076
+    second: f_ring.03.R_end
+  - first:
+      1: 100078
+    second: face
+  - first:
+      1: 100080
+    second: Flagka
+  - first:
+      1: 100082
+    second: Flagka_end
+  - first:
+      1: 100084
+    second: foot.L
+  - first:
+      1: 100086
+    second: foot.L.001
+  - first:
+      1: 100088
+    second: foot.L.001_end
+  - first:
+      1: 100090
+    second: foot.R
+  - first:
+      1: 100092
+    second: foot.R.001
+  - first:
+      1: 100094
+    second: foot.R.001_end
+  - first:
+      1: 100096
+    second: forearm.L
+  - first:
+      1: 100098
+    second: forearm.L.001
+  - first:
+      1: 100100
+    second: forearm.L.001_end
+  - first:
+      1: 100102
+    second: forearm.R
+  - first:
+      1: 100104
+    second: forearm.R.001
+  - first:
+      1: 100106
+    second: forearm.R.001_end
+  - first:
+      1: 100108
+    second: Glaz
+  - first:
+      1: 100110
+    second: Glaz.001
+  - first:
+      1: 100112
+    second: Glaz.001_end
+  - first:
+      1: 100114
+    second: Glaz_end
+  - first:
+      1: 100116
+    second: 'Hamer Dwarf Master '
+  - first:
+      1: 100118
+    second: hand.L
+  - first:
+      1: 100120
+    second: hand.R
+  - first:
+      1: 100122
+    second: Hvost
+  - first:
+      1: 100124
+    second: Hvost.001
+  - first:
+      1: 100126
+    second: Hvost.002
+  - first:
+      1: 100128
+    second: Hvost.003
+  - first:
+      1: 100130
+    second: Hvost.004
+  - first:
+      1: 100132
+    second: Hvost.004_end
+  - first:
+      1: 100134
+    second: Master Dwarf
+  - first:
+      1: 100136
+    second: metarig
+  - first:
+      1: 100138
+    second: Napl.L
+  - first:
+      1: 100140
+    second: Napl.L.001
+  - first:
+      1: 100142
+    second: Napl.L.001_end
+  - first:
+      1: 100144
+    second: Napl.R
+  - first:
+      1: 100146
+    second: Napl.R_end
+  - first:
+      1: 100148
+    second: root
+  - first:
+      1: 100150
+    second: Rub.L
+  - first:
+      1: 100152
+    second: Rub.L.001
+  - first:
+      1: 100154
+    second: Rub.L.001_end
+  - first:
+      1: 100156
+    second: Rub.L.002
+  - first:
+      1: 100158
+    second: Rub.L.002_end
+  - first:
+      1: 100160
+    second: Rub.L_end
+  - first:
+      1: 100162
+    second: Rub.R
+  - first:
+      1: 100164
+    second: Rub.R.001
+  - first:
+      1: 100166
+    second: Rub.R.001_end
+  - first:
+      1: 100168
+    second: Rub.R.002
+  - first:
+      1: 100170
+    second: Rub.R.002_end
+  - first:
+      1: 100172
+    second: Rub.R_end
+  - first:
+      1: 100174
+    second: Rubaha.L
+  - first:
+      1: 100176
+    second: Rubaha.L.001
+  - first:
+      1: 100178
+    second: Rubaha.L.001_end
+  - first:
+      1: 100180
+    second: Rubaha.L.002
+  - first:
+      1: 100182
+    second: Rubaha.L.002_end
+  - first:
+      1: 100184
+    second: Rubaha.L.003
+  - first:
+      1: 100186
+    second: Rubaha.L.003_end
+  - first:
+      1: 100188
+    second: Rubaha.L_end
+  - first:
+      1: 100190
+    second: Rubaha.R
+  - first:
+      1: 100192
+    second: Rubaha.R.001
+  - first:
+      1: 100194
+    second: Rubaha.R.001_end
+  - first:
+      1: 100196
+    second: Rubaha.R.002
+  - first:
+      1: 100198
+    second: Rubaha.R.002_end
+  - first:
+      1: 100200
+    second: Rubaha.R.003
+  - first:
+      1: 100202
+    second: Rubaha.R.003_end
+  - first:
+      1: 100204
+    second: Rubaha.R_end
+  - first:
+      1: 100206
+    second: RUN
+  - first:
+      1: 100208
+    second: shin.L
+  - first:
+      1: 100210
+    second: shin.L.001
+  - first:
+      1: 100212
+    second: shin.L.001_end
+  - first:
+      1: 100214
+    second: shin.R
+  - first:
+      1: 100216
+    second: shin.R.001
+  - first:
+      1: 100218
+    second: shin.R.001_end
+  - first:
+      1: 100220
+    second: shoulder.L
+  - first:
+      1: 100222
+    second: shoulder.R
+  - first:
+      1: 100224
+    second: spine
+  - first:
+      1: 100226
+    second: spine.002
+  - first:
+      1: 100228
+    second: spine.003
+  - first:
+      1: 100230
+    second: spine.004
+  - first:
+      1: 100232
+    second: thigh.L
+  - first:
+      1: 100234
+    second: thigh.R
+  - first:
+      1: 100236
+    second: thumb.01.L
+  - first:
+      1: 100238
+    second: thumb.01.R
+  - first:
+      1: 100240
+    second: thumb.02.L
+  - first:
+      1: 100242
+    second: thumb.02.R
+  - first:
+      1: 100244
+    second: thumb.03.L
+  - first:
+      1: 100246
+    second: thumb.03.L_end
+  - first:
+      1: 100248
+    second: thumb.03.R
+  - first:
+      1: 100250
+    second: thumb.03.R_end
+  - first:
+      1: 100252
+    second: toe.L
+  - first:
+      1: 100254
+    second: toe.L_end
+  - first:
+      1: 100256
+    second: toe.R
+  - first:
+      1: 100258
+    second: toe.R_end
+  - first:
+      1: 100260
+    second: upper_arm.L
+  - first:
+      1: 100262
+    second: upper_arm.R
+  - first:
+      1: 100264
+    second: Us.L
+  - first:
+      1: 100266
+    second: Us.L.001
+  - first:
+      1: 100268
+    second: Us.L.002
+  - first:
+      1: 100270
+    second: Us.L.003
+  - first:
+      1: 100272
+    second: Us.L.004
+  - first:
+      1: 100274
+    second: Us.L.004_end
+  - first:
+      1: 100276
+    second: Us.R
+  - first:
+      1: 100278
+    second: Us.R.001
+  - first:
+      1: 100280
+    second: Us.R.002
+  - first:
+      1: 100282
+    second: Us.R.003
+  - first:
+      1: 100284
+    second: Us.R.004
+  - first:
+      1: 100286
+    second: Us.R.004_end
+  - first:
+      1: 100288
+    second: Weapon
+  - first:
+      1: 100290
+    second: Weapon_end
+  - first:
+      4: 400000
+    second: Boroda
+  - first:
+      4: 400002
+    second: Boroda.001
+  - first:
+      4: 400004
+    second: Boroda.002
+  - first:
+      4: 400006
+    second: Boroda.003
+  - first:
+      4: 400008
+    second: Boroda.004
+  - first:
+      4: 400010
+    second: Boroda.004_end
+  - first:
+      4: 400012
+    second: //RootNode
+  - first:
+      4: 400014
+    second: f_index.01.L
+  - first:
+      4: 400016
+    second: f_index.01.R
+  - first:
+      4: 400018
+    second: f_index.02.L
+  - first:
+      4: 400020
+    second: f_index.02.R
+  - first:
+      4: 400022
+    second: f_index.03.L
+  - first:
+      4: 400024
+    second: f_index.03.L_end
+  - first:
+      4: 400026
+    second: f_index.03.R
+  - first:
+      4: 400028
+    second: f_index.03.R_end
+  - first:
+      4: 400030
+    second: f_middle.01.L
+  - first:
+      4: 400032
+    second: f_middle.01.R
+  - first:
+      4: 400034
+    second: f_middle.02.L
+  - first:
+      4: 400036
+    second: f_middle.02.R
+  - first:
+      4: 400038
+    second: f_middle.03.L
+  - first:
+      4: 400040
+    second: f_middle.03.L_end
+  - first:
+      4: 400042
+    second: f_middle.03.R
+  - first:
+      4: 400044
+    second: f_middle.03.R_end
+  - first:
+      4: 400046
+    second: f_pinky.01.L
+  - first:
+      4: 400048
+    second: f_pinky.01.R
+  - first:
+      4: 400050
+    second: f_pinky.02.L
+  - first:
+      4: 400052
+    second: f_pinky.02.R
+  - first:
+      4: 400054
+    second: f_pinky.03.L
+  - first:
+      4: 400056
+    second: f_pinky.03.L_end
+  - first:
+      4: 400058
+    second: f_pinky.03.R
+  - first:
+      4: 400060
+    second: f_pinky.03.R_end
+  - first:
+      4: 400062
+    second: f_ring.01.L
+  - first:
+      4: 400064
+    second: f_ring.01.R
+  - first:
+      4: 400066
+    second: f_ring.02.L
+  - first:
+      4: 400068
+    second: f_ring.02.R
+  - first:
+      4: 400070
+    second: f_ring.03.L
+  - first:
+      4: 400072
+    second: f_ring.03.L_end
+  - first:
+      4: 400074
+    second: f_ring.03.R
+  - first:
+      4: 400076
+    second: f_ring.03.R_end
+  - first:
+      4: 400078
+    second: face
+  - first:
+      4: 400080
+    second: Flagka
+  - first:
+      4: 400082
+    second: Flagka_end
+  - first:
+      4: 400084
+    second: foot.L
+  - first:
+      4: 400086
+    second: foot.L.001
+  - first:
+      4: 400088
+    second: foot.L.001_end
+  - first:
+      4: 400090
+    second: foot.R
+  - first:
+      4: 400092
+    second: foot.R.001
+  - first:
+      4: 400094
+    second: foot.R.001_end
+  - first:
+      4: 400096
+    second: forearm.L
+  - first:
+      4: 400098
+    second: forearm.L.001
+  - first:
+      4: 400100
+    second: forearm.L.001_end
+  - first:
+      4: 400102
+    second: forearm.R
+  - first:
+      4: 400104
+    second: forearm.R.001
+  - first:
+      4: 400106
+    second: forearm.R.001_end
+  - first:
+      4: 400108
+    second: Glaz
+  - first:
+      4: 400110
+    second: Glaz.001
+  - first:
+      4: 400112
+    second: Glaz.001_end
+  - first:
+      4: 400114
+    second: Glaz_end
+  - first:
+      4: 400116
+    second: 'Hamer Dwarf Master '
+  - first:
+      4: 400118
+    second: hand.L
+  - first:
+      4: 400120
+    second: hand.R
+  - first:
+      4: 400122
+    second: Hvost
+  - first:
+      4: 400124
+    second: Hvost.001
+  - first:
+      4: 400126
+    second: Hvost.002
+  - first:
+      4: 400128
+    second: Hvost.003
+  - first:
+      4: 400130
+    second: Hvost.004
+  - first:
+      4: 400132
+    second: Hvost.004_end
+  - first:
+      4: 400134
+    second: Master Dwarf
+  - first:
+      4: 400136
+    second: metarig
+  - first:
+      4: 400138
+    second: Napl.L
+  - first:
+      4: 400140
+    second: Napl.L.001
+  - first:
+      4: 400142
+    second: Napl.L.001_end
+  - first:
+      4: 400144
+    second: Napl.R
+  - first:
+      4: 400146
+    second: Napl.R_end
+  - first:
+      4: 400148
+    second: root
+  - first:
+      4: 400150
+    second: Rub.L
+  - first:
+      4: 400152
+    second: Rub.L.001
+  - first:
+      4: 400154
+    second: Rub.L.001_end
+  - first:
+      4: 400156
+    second: Rub.L.002
+  - first:
+      4: 400158
+    second: Rub.L.002_end
+  - first:
+      4: 400160
+    second: Rub.L_end
+  - first:
+      4: 400162
+    second: Rub.R
+  - first:
+      4: 400164
+    second: Rub.R.001
+  - first:
+      4: 400166
+    second: Rub.R.001_end
+  - first:
+      4: 400168
+    second: Rub.R.002
+  - first:
+      4: 400170
+    second: Rub.R.002_end
+  - first:
+      4: 400172
+    second: Rub.R_end
+  - first:
+      4: 400174
+    second: Rubaha.L
+  - first:
+      4: 400176
+    second: Rubaha.L.001
+  - first:
+      4: 400178
+    second: Rubaha.L.001_end
+  - first:
+      4: 400180
+    second: Rubaha.L.002
+  - first:
+      4: 400182
+    second: Rubaha.L.002_end
+  - first:
+      4: 400184
+    second: Rubaha.L.003
+  - first:
+      4: 400186
+    second: Rubaha.L.003_end
+  - first:
+      4: 400188
+    second: Rubaha.L_end
+  - first:
+      4: 400190
+    second: Rubaha.R
+  - first:
+      4: 400192
+    second: Rubaha.R.001
+  - first:
+      4: 400194
+    second: Rubaha.R.001_end
+  - first:
+      4: 400196
+    second: Rubaha.R.002
+  - first:
+      4: 400198
+    second: Rubaha.R.002_end
+  - first:
+      4: 400200
+    second: Rubaha.R.003
+  - first:
+      4: 400202
+    second: Rubaha.R.003_end
+  - first:
+      4: 400204
+    second: Rubaha.R_end
+  - first:
+      4: 400206
+    second: RUN
+  - first:
+      4: 400208
+    second: shin.L
+  - first:
+      4: 400210
+    second: shin.L.001
+  - first:
+      4: 400212
+    second: shin.L.001_end
+  - first:
+      4: 400214
+    second: shin.R
+  - first:
+      4: 400216
+    second: shin.R.001
+  - first:
+      4: 400218
+    second: shin.R.001_end
+  - first:
+      4: 400220
+    second: shoulder.L
+  - first:
+      4: 400222
+    second: shoulder.R
+  - first:
+      4: 400224
+    second: spine
+  - first:
+      4: 400226
+    second: spine.002
+  - first:
+      4: 400228
+    second: spine.003
+  - first:
+      4: 400230
+    second: spine.004
+  - first:
+      4: 400232
+    second: thigh.L
+  - first:
+      4: 400234
+    second: thigh.R
+  - first:
+      4: 400236
+    second: thumb.01.L
+  - first:
+      4: 400238
+    second: thumb.01.R
+  - first:
+      4: 400240
+    second: thumb.02.L
+  - first:
+      4: 400242
+    second: thumb.02.R
+  - first:
+      4: 400244
+    second: thumb.03.L
+  - first:
+      4: 400246
+    second: thumb.03.L_end
+  - first:
+      4: 400248
+    second: thumb.03.R
+  - first:
+      4: 400250
+    second: thumb.03.R_end
+  - first:
+      4: 400252
+    second: toe.L
+  - first:
+      4: 400254
+    second: toe.L_end
+  - first:
+      4: 400256
+    second: toe.R
+  - first:
+      4: 400258
+    second: toe.R_end
+  - first:
+      4: 400260
+    second: upper_arm.L
+  - first:
+      4: 400262
+    second: upper_arm.R
+  - first:
+      4: 400264
+    second: Us.L
+  - first:
+      4: 400266
+    second: Us.L.001
+  - first:
+      4: 400268
+    second: Us.L.002
+  - first:
+      4: 400270
+    second: Us.L.003
+  - first:
+      4: 400272
+    second: Us.L.004
+  - first:
+      4: 400274
+    second: Us.L.004_end
+  - first:
+      4: 400276
+    second: Us.R
+  - first:
+      4: 400278
+    second: Us.R.001
+  - first:
+      4: 400280
+    second: Us.R.002
+  - first:
+      4: 400282
+    second: Us.R.003
+  - first:
+      4: 400284
+    second: Us.R.004
+  - first:
+      4: 400286
+    second: Us.R.004_end
+  - first:
+      4: 400288
+    second: Weapon
+  - first:
+      4: 400290
+    second: Weapon_end
+  - first:
+      21: 2100000
+    second: Material Hamer Dwarf Master_
+  - first:
+      21: 2100002
+    second: Material Master Dwarf
+  - first:
+      43: 4300000
+    second: 'Hamer Dwarf Master '
+  - first:
+      43: 4300002
+    second: Master Dwarf
+  - first:
+      74: 7400000
+    second: ' All Animation'
+  - first:
+      74: 7400002
+    second: Idle (1)
+  - first:
+      74: 7400004
+    second: Idle (2)
+  - first:
+      74: 7400006
+    second: Idle (3)
+  - first:
+      74: 7400008
+    second: Idle (4)
+  - first:
+      74: 7400010
+    second: Walk
+  - first:
+      74: 7400012
+    second: Run
+  - first:
+      74: 7400014
+    second: Combat_run
+  - first:
+      74: 7400016
+    second: Death (1)
+  - first:
+      74: 7400018
+    second: Death (2)
+  - first:
+      74: 7400020
+    second: Attack (1)
+  - first:
+      74: 7400022
+    second: Attack (2)
+  - first:
+      74: 7400024
+    second: Attack (3)
+  - first:
+      74: 7400026
+    second: Attack (4)
+  - first:
+      74: 7400028
+    second: Attack (5)
+  - first:
+      74: 7400030
+    second: Combat -Idle
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: 'Hamer Dwarf Master '
+  - first:
+      137: 13700002
+    second: Master Dwarf
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -330,7 +960,7 @@ ModelImporter:
       name: Material Master Dwarf
     second: {fileID: 2100000, guid: 19c34471aca42124daf6c104a6c1ea9b, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 0
@@ -339,6 +969,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 0
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -347,6 +978,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -358,6 +990,7 @@ ModelImporter:
     - serializedVersion: 16
       name: ' All Animation'
       takeName: Scene
+      internalID: 0
       firstFrame: 2
       lastFrame: 1066
       wrapMode: 0
@@ -386,6 +1019,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle (1)
       takeName: Scene
+      internalID: 0
       firstFrame: 2
       lastFrame: 179
       wrapMode: 0
@@ -406,14 +1040,22 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.9987775
+        functionName: LoopAnimations
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 2
     - serializedVersion: 16
       name: Idle (2)
       takeName: Scene
+      internalID: 0
       firstFrame: 180
       lastFrame: 232
       wrapMode: 0
@@ -434,14 +1076,22 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.99877745
+        functionName: LoopAnimations
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 2
     - serializedVersion: 16
       name: Idle (3)
       takeName: Scene
+      internalID: 0
       firstFrame: 233
       lastFrame: 539
       wrapMode: 0
@@ -462,14 +1112,22 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.99633247
+        functionName: LoopAnimations
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 2
     - serializedVersion: 16
       name: Idle (4)
       takeName: Scene
+      internalID: 0
       firstFrame: 540
       lastFrame: 634
       wrapMode: 0
@@ -490,14 +1148,22 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.9987777
+        functionName: LoopAnimations
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 2
     - serializedVersion: 16
       name: Walk
       takeName: Scene
+      internalID: 0
       firstFrame: 636
       lastFrame: 670
       wrapMode: 0
@@ -526,6 +1192,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Run
       takeName: Scene
+      internalID: 0
       firstFrame: 672
       lastFrame: 702
       wrapMode: 0
@@ -554,6 +1221,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Combat_run
       takeName: Scene
+      internalID: 0
       firstFrame: 704
       lastFrame: 734
       wrapMode: 0
@@ -582,6 +1250,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Death (1)
       takeName: Scene
+      internalID: 0
       firstFrame: 736
       lastFrame: 781
       wrapMode: 0
@@ -610,6 +1279,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Death (2)
       takeName: Scene
+      internalID: 0
       firstFrame: 783
       lastFrame: 829
       wrapMode: 0
@@ -638,6 +1308,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack (1)
       takeName: Scene
+      internalID: 0
       firstFrame: 831
       lastFrame: 866
       wrapMode: 0
@@ -666,6 +1337,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack (2)
       takeName: Scene
+      internalID: 0
       firstFrame: 869
       lastFrame: 908
       wrapMode: 0
@@ -694,6 +1366,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack (3)
       takeName: Scene
+      internalID: 0
       firstFrame: 913
       lastFrame: 941
       wrapMode: 0
@@ -722,6 +1395,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack (4)
       takeName: Scene
+      internalID: 0
       firstFrame: 946
       lastFrame: 995
       wrapMode: 0
@@ -750,6 +1424,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack (5)
       takeName: Scene
+      internalID: 0
       firstFrame: 1000
       lastFrame: 1037
       wrapMode: 0
@@ -778,6 +1453,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Combat -Idle
       takeName: Scene
+      internalID: 0
       firstFrame: 1042
       lastFrame: 1066
       wrapMode: 0
@@ -809,19 +1485,33 @@ ModelImporter:
     globalScale: 0.7
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -829,10 +1519,13 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -842,14 +1535,17 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.7
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

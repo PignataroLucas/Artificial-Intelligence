@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
-public class FSM : MonoBehaviour
+public class Generic_Warrior : AI
 {
     
 }
