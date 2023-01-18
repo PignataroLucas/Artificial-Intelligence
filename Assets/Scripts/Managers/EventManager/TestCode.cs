@@ -27,5 +27,9 @@ public class TestCode : MonoBehaviour, IEventListener
         EventManager.StopListering(GenericEvents.genericDebug, DebugCall);
     }
 
-    
+    private void OnDisable()
+    {
+        OnDisableListenerSubscriptions();
+    }
+
 }
