@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class IdleState <T> : States<T>
 {
@@ -20,5 +21,15 @@ public class IdleState <T> : States<T>
         _ai.animator.SetBool("canIdle",true);
     }
 
+    public override void OnUpdate()
+    {
+        if(Input.GetKeyDown(KeyCode.A)) 
+        {            
+            EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+            { GameplayHashtableParameters.ChangeState.ToString(),State.IdleAttack},
+            { GameplayHashtableParameters.Agent.ToString(), _ai }
+            });
+        }
+    }
 
 }

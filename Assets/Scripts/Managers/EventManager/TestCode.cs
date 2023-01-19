@@ -18,13 +18,13 @@ public class TestCode : MonoBehaviour, IEventListener
 
     public void OnEnableListenerSubscriptions()
     {
-        EventManager.StartListening(GenericEvents.genericDebug, DebugCall);
+        EventManager.StartListening(GenericEvents.GenericDebug, DebugCall);
     }
 
 
     public void OnDisableListenerSubscriptions()
     {
-        EventManager.StopListering(GenericEvents.genericDebug, DebugCall);
+        EventManager.StopListering(GenericEvents.GenericDebug, DebugCall);
     }
 
     private void OnDisable()

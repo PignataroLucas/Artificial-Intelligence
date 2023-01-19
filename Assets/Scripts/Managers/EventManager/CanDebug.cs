@@ -14,7 +14,7 @@ public class CanDebug : MonoBehaviour , IUpdate
 
     private void CallEventDebug()
     {        
-        EventManager.TriggerEvent(GenericEvents.genericDebug);        
+        EventManager.TriggerEvent(GenericEvents.GenericDebug);        
     }
 
     public void OnUpdate()
