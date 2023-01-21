@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour , IUpdate
     [SerializeField] private List<Transform> _dwarfPositionSpawn;
 
     public GameObject dwarf;
+    private int currentIndex = 0;
+    private int _maxDwarfToSpawn = 5;
 
     private void Start()
     {
@@ -25,10 +27,18 @@ public class GameManager : MonoBehaviour , IUpdate
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            for (int i = 0; i < _dwarfPositionSpawn.Count; i++)
-            {          
-                Instantiate(dwarf, _dwarfPositionSpawn[i].position, Quaternion.identity);                         
-            }
+           if(currentIndex < _maxDwarfToSpawn && _dwarfPositionSpawn.Count >0)
+           {
+                int randomIndex = Random.Range(0,_dwarfPositionSpawn.Count);
+                Vector3 spawnPos = _dwarfPositionSpawn[randomIndex].position;
+                Instantiate(dwarf, spawnPos, Quaternion.identity);
+                _dwarfPositionSpawn.RemoveAt(randomIndex);
+                currentIndex++;
+           }
+           else
+           {
+                Debug.Log("No more positions available to spawn objects");
+           }
         }
     }
 

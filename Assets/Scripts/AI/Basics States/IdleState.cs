@@ -12,13 +12,13 @@ public class IdleState <T> : States<T>
 
     public override void OnEnter()
     {
-        SetTransitionAnim();        
+       SetTransitionAnim();        
     }
 
     public void SetTransitionAnim()
-    {
+    {         
         _ai.animator.SetInteger("idleType", Random.Range(0, 4));
-        _ai.animator.SetBool("canIdle",true);
+        _ai.animator.SetBool("canIdle", true);        
     }
 
     public override void OnUpdate()
@@ -29,6 +29,7 @@ public class IdleState <T> : States<T>
             { GameplayHashtableParameters.ChangeState.ToString(),State.IdleAttack},
             { GameplayHashtableParameters.Agent.ToString(), _ai }
             });
+            _ai.animator.SetBool("canIdle", false);
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,11 @@ public class IdleAttackState <T> : States<T>
 
     public override void OnEnter()
     {
-        Debug.Log("IdleAttack");
+        SetAnimations();
     }
 
-
-
-
+    private void SetAnimations()
+    {        
+        _ai.animator.SetBool("ToIdleAttack", true);
+    }
 }

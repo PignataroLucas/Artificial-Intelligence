@@ -32,9 +32,7 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
     public virtual void OnUpdate()
     {
-        fsm.OnUpdate();
-
-        Debug.Log(fsm.current);
+       
     }
 
     private void TransitionState(Hashtable data)
@@ -45,17 +43,14 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
         if (ai == this) {
 
-            fsm.Transition(state);
-            Debug.Log("Entre");
+            fsm.Transition(state);           
         } 
-
-
     }
 
 
     public void LoopAnimations() 
-    {
-        _idleState.SetTransitionAnim();
+    {       
+        _idleState.SetTransitionAnim();  
     }
 
 
