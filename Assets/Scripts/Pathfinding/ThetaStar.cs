@@ -37,6 +37,7 @@ public class ThetaStar<T>
                 var currNeigh = item.Key;
                 var currNeighCost = item.Value;
                 if (visited.Contains(currNeigh)) continue;
+
                 if (parents.ContainsKey(current) && inSight(parents[current], currNeigh))
                 {
                     var grandFather = parents[current];
@@ -57,6 +58,7 @@ public class ThetaStar<T>
                 }
             }
         }
+
         return null;
     }
     List<T> ContructPath(T end, Dictionary<T, T> parents)
