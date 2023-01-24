@@ -5025,7 +5025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3392b70f65e217543bccad52b24d78c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _genericSO: {fileID: 11400000, guid: d61af528cdc4aa64fb924dba8623dc58, type: 2}
   animator: {fileID: 948074681041473912}
+  goblin:
+    serializedVersion: 2
+    m_Bits: 64
+  detectionRadius: 3
 --- !u!95 &948074681041473912
 Animator:
   serializedVersion: 4

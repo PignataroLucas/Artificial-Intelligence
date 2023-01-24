@@ -23,7 +23,9 @@ public class IdleState <T> : States<T>
 
     public override void OnUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.A)) 
+        Collider[] enemiesInRandius = Physics.OverlapSphere(_ai.transform.position, _ai._genericSO.detectionRadius, _ai.goblin);
+
+        if (enemiesInRandius.Length > 0) 
         {            
             EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
             { GameplayHashtableParameters.ChangeState.ToString(),State.IdleAttack},

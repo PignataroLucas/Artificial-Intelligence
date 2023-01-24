@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 {
@@ -9,8 +10,14 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
     public FSM<string> fsm;
     private IdleState<string> _idleState;
     private IdleAttackState<string> _idleAttackState;
+    private AttackState<string> _attackState;
+
+    public Generic_Unit_SO _genericSO;
 
     public Animator animator;
+
+    public LayerMask goblin;
+   
 
     public virtual void Awake()
     {       
@@ -24,8 +31,11 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
         _idleState = new IdleState<string>(this);
         _idleAttackState = new IdleAttackState<string>(this);
+        _attackState = new AttackState<string>(this);
 
         _idleState.SetTransition(State.IdleAttack, _idleAttackState);
+        _idleAttackState.SetTransition(State.Attack, _attackState);
+        _attackState.SetTransition(State.IdleAttack, _idleAttackState);
 
         fsm = new FSM<string>(_idleState);
     }
@@ -53,6 +63,15 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
         _idleState.SetTransitionAnim();  
     }
 
+    public void Attack()
+    {
+        _idleAttackState.ToAttackState();
+    }
+
+    public void ToIdleAttack()
+    {
+        _attackState.ToIdleAttackState();
+    }
 
     private void OnDisable()
     {
@@ -74,6 +93,11 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
         EventManager.StartListening(GenericEvents.ChangeState, TransitionState);
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _genericSO.detectionRadius);
 
+    }
 
 }
