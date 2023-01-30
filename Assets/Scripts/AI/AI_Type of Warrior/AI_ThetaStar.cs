@@ -79,6 +79,23 @@ public class AI_ThetaStar : MonoBehaviour
         return list;
     }
 
+    public Node FindClosestNode(Vector3 destination)
+    {
+        Node closestNode = null;
+        float closestNodeDistance = float.MaxValue;
+
+        foreach ( Node node in _nodes)
+        {
+            float distance = Vector3.Distance(node.transform.position, destination);
+            if (distance < closestNodeDistance)
+            {
+                closestNode = node;
+                closestNodeDistance = distance;
+            }
+        }
+        return closestNode;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

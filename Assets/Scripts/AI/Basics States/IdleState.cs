@@ -22,17 +22,16 @@ public class IdleState <T> : States<T>
     }
 
     public override void OnUpdate()
-    {
-        Collider[] enemiesInRandius = Physics.OverlapSphere(_ai.transform.position, _ai._genericSO.detectionRadius, _ai.goblin);
+    {       
 
-        if (enemiesInRandius.Length > 0) 
-        {            
+        if(Input.GetKeyDown(KeyCode.R)) 
+        {           
             EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
-            { GameplayHashtableParameters.ChangeState.ToString(),State.IdleAttack},
+            { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
             { GameplayHashtableParameters.Agent.ToString(), _ai }
             });
-            _ai.animator.SetBool("canIdle", false);
         }
+
     }
 
 }

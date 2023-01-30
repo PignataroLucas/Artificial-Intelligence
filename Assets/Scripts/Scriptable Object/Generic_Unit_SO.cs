@@ -7,6 +7,7 @@ public class Generic_Unit_SO : ScriptableObject
     public float AttackRange = 0;
     public int AttackRate = 0;
     public int Life = 0;
+    public float Speed = 5;
     public float detectionRadius = 2f;
 
 }

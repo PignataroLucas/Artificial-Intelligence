@@ -15,8 +15,7 @@ public class IdleAttackState <T> : States<T>
 
     public override void OnEnter()
     {
-        SetAnimations();
-        Debug.Log("Idle Attack");
+        SetAnimations();        
     }
 
 
@@ -24,6 +23,7 @@ public class IdleAttackState <T> : States<T>
     {        
         _ai.animator.SetBool("ToIdleAttack", true);
         _ai.animator.SetBool("canIdle", false);
+        _ai.animator.SetBool("CanRun", false);
     }
     public  void ToAttackState()
     {

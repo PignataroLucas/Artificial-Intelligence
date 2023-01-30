@@ -974,8 +974,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: Event ToIdleAttack has a time (1.300000) outside the
-      clip's valid range (0.000000..1.299999). It will never be fired
+    animationImportWarnings: Event ToIdleAttack has a time (1.166667) outside the
+      clip's valid range (0.000000..1.166666). It will never be firedEvent ToIdleAttack
+      has a time (1.300000) outside the clip's valid range (0.000000..1.299999).
+      It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -1504,7 +1506,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9955845
+      - time: 1
         functionName: Attack
         data: 
         objectReferenceParameter: {instanceID: 0}

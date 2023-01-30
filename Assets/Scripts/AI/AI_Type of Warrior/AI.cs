@@ -1,27 +1,33 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 {
 
     public FSM<string> fsm;
+
     private IdleState<string> _idleState;
     private IdleAttackState<string> _idleAttackState;
     private AttackState<string> _attackState;
+    private SeekState<string> _seekState;
 
     public Generic_Unit_SO _genericSO;
 
     public Animator animator;
 
     public LayerMask goblin;
-   
 
+    public GameObject [] target;
+    public NavMeshAgent _navMeshAgent;
+    
     public virtual void Awake()
-    {       
-       animator = GetComponent<Animator>();
+    {      
+        
+       animator = GetComponent<Animator>();      
+
        OnEnableListenerSubscriptions();
     }
 
@@ -32,18 +38,26 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
         _idleState = new IdleState<string>(this);
         _idleAttackState = new IdleAttackState<string>(this);
         _attackState = new AttackState<string>(this);
+        _seekState = new SeekState<string>(this);
 
-        _idleState.SetTransition(State.IdleAttack, _idleAttackState);
+        
         _idleAttackState.SetTransition(State.Attack, _attackState);
         _attackState.SetTransition(State.IdleAttack, _idleAttackState);
+        _idleState.SetTransition(State.Seek, _seekState);
+        _seekState.SetTransition(State.IdleAttack, _idleAttackState);
 
         fsm = new FSM<string>(_idleState);
+
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        target = GameObject.FindGameObjectsWithTag("Goblin");
+
     }
 
     public virtual void OnUpdate()
     {
        
-    }
+    }   
 
     private void TransitionState(Hashtable data)
     {
