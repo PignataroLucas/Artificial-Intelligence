@@ -9,5 +9,6 @@ public class Generic_Unit_SO : ScriptableObject
     public int Life = 0;
     public float Speed = 5;
     public float detectionRadius = 2f;
+    public TypeOfWarriors Class;
 
 }

@@ -4991,9 +4991,10 @@ GameObject:
   - component: {fileID: 948074681041473913}
   - component: {fileID: 948074681041473912}
   - component: {fileID: 5040820726932551878}
-  m_Layer: 0
+  - component: {fileID: 1266697348527917906}
+  m_Layer: 9
   m_Name: Drawf_Master_AI
-  m_TagString: Untagged
+  m_TagString: Dwarf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5031,7 +5032,11 @@ MonoBehaviour:
   goblin:
     serializedVersion: 2
     m_Bits: 64
-  target: {fileID: 0}
+  dwarf:
+    serializedVersion: 2
+    m_Bits: 512
+  target: []
+  enemiesInRandius: []
   _navMeshAgent: {fileID: 5040820726932551878}
 --- !u!95 &948074681041473912
 Animator:
@@ -5062,12 +5067,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 948074681041473916}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.5
+  m_StoppingDistance: 1.8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5075,3 +5080,16 @@ NavMeshAgent:
   m_BaseOffset: -0.03
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1266697348527917906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948074681041473916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.99}
+  m_Center: {x: 0, y: 0.67, z: 0.16}

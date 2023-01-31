@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
 
+
 public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 {
 
@@ -18,11 +19,12 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
     public Animator animator;
 
-    public LayerMask goblin;
+    public LayerMask goblin,dwarf;
 
     public GameObject [] target;
+    public Collider[] enemiesInRandius; 
+
     public NavMeshAgent _navMeshAgent;
-    
     public virtual void Awake()
     {      
         
@@ -50,14 +52,13 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
-        target = GameObject.FindGameObjectsWithTag("Goblin");
-
+       
     }
 
     public virtual void OnUpdate()
-    {
-       
-    }   
+    { }
+
+
 
     private void TransitionState(Hashtable data)
     {
@@ -69,6 +70,11 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
             fsm.Transition(state);           
         } 
+    }
+
+    public  virtual void SetTarget()
+    {
+
     }
 
 

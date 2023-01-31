@@ -977,7 +977,8 @@ ModelImporter:
     animationImportWarnings: Event ToIdleAttack has a time (1.166667) outside the
       clip's valid range (0.000000..1.166666). It will never be firedEvent ToIdleAttack
       has a time (1.300000) outside the clip's valid range (0.000000..1.299999).
-      It will never be fired
+      It will never be firedEvent Attack has a time (0.800000) outside the clip's
+      valid range (0.000000..0.799999). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0

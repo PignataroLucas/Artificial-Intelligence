@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Goblin
+  - Dwarf
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - goblin
   - Obstacle
   - Ground
-  - 
+  - dwarf
   - 
   - 
   - 
