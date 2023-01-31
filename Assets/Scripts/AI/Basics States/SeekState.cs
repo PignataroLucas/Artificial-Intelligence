@@ -35,10 +35,8 @@ public class SeekState <T> : States <T>
             _ai.animator.SetBool("ToIdleAttack", true);
         }
 
-        _ai.transform.LookAt(_ai.target[randomIndex].transform.position);
-        randomIndex = Random.Range(0, _ai.target.Length);
-
-        _ai._navMeshAgent.destination = _ai.target[randomIndex].transform.position;
+        _ai.transform.LookAt(_ai.enemyTarget.transform.position);
+        _ai._navMeshAgent.destination = _ai.enemyTarget.transform.position;
 
     }
 

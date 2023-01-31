@@ -22,7 +22,8 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
     public LayerMask goblin,dwarf;
 
     public GameObject [] target;
-    public Collider[] enemiesInRandius; 
+    public GameObject enemyTarget;
+    public Collider [] enemiesInRandius; 
 
     public NavMeshAgent _navMeshAgent;
     public virtual void Awake()
@@ -50,15 +51,11 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
         fsm = new FSM<string>(_idleState);
 
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-
-       
+        _navMeshAgent = GetComponent<NavMeshAgent>();       
     }
 
     public virtual void OnUpdate()
     { }
-
-
 
     private void TransitionState(Hashtable data)
     {
@@ -76,7 +73,6 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
     {
 
     }
-
 
     public void LoopAnimations() 
     {       
@@ -104,9 +100,7 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
     public void OnEnableListenerSubscriptions()
     {
         EventManager.StartListening(GenericEvents.ChangeState, TransitionState);       
-    }
-
-    
+    }    
 
     public void OnDisableListenerSubscriptions()
     {
