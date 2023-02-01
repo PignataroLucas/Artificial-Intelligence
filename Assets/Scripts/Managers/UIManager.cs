@@ -22,6 +22,11 @@ public class UIManager : MonoBehaviour , IEventListener
     {
         EventManager.TriggerEvent(GenericEvents.BuyUnitGoblin);
     }
+    public void StartEvent()
+    {
+        EventManager.TriggerEvent(GenericEvents.StartBattle);
+    }
+
 
     public void OnEnableListenerSubscriptions()
     {
@@ -29,23 +34,19 @@ public class UIManager : MonoBehaviour , IEventListener
         EventManager.StartListening(GenericEvents.DisableButtomGoblin, DisableButtomGoblin);
         EventManager.StartListening(GenericEvents.TurnOnStartButtom, TurnOnStartButtom);
     }
-
     private void TurnOnStartButtom(Hashtable obj)
     {
         startButtom.SetActive(true);
     }
-
     public void OnDisableListenerSubscriptions()
     {
         EventManager.StopListering(GenericEvents.DisableButtomDwarf, DisableButtomDwarf);
         EventManager.StopListering(GenericEvents.DisableButtomGoblin, DisableButtomGoblin);
     }
-
     private void DisableButtomDwarf(Hashtable obj)
     {
         dwarfButtom.SetActive(false);
     }
-
     private void DisableButtomGoblin(Hashtable obj)
     {
         goblinButton.SetActive(false);

@@ -45,8 +45,7 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
         if (currentIndexDwarf == 4) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
         if (currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomGoblin); }
 
-        if (currentIndexDwarf == 4 && currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }           
-        
+        if (currentIndexDwarf == 4 && currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
     }
 
 
@@ -57,11 +56,13 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
     {
         EventManager.StartListening(GenericEvents.BuyUnitDwarf,BuyUnitDwarf);
         EventManager.StartListening(GenericEvents.BuyUnitGoblin, BuyUnitGoblin);
+        EventManager.StartListening(GenericEvents.StartBattle, StartBattle);
     }
     public void OnDisableListenerSubscriptions()
     {
         EventManager.StopListering(GenericEvents.BuyUnitDwarf, BuyUnitDwarf);
         EventManager.StopListering(GenericEvents.BuyUnitGoblin, BuyUnitGoblin);
+        EventManager.StopListering(GenericEvents.StartBattle, StartBattle);
     }
     private void BuyUnitDwarf(Hashtable obj)
     {
@@ -84,6 +85,14 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
             _goblinPositionSpawn.RemoveAt(randomIndex);
             currentIndexGoblin++;
         }        
+    }
+
+    private void StartBattle(Hashtable obj)
+    {
+        Debug.Log("Empieza la batalla");
+        //Aca deberia Mandar un evento a generic Warrior para que se asigne el target de forrma random
+        //Desabilitar el boton de Start
+        //Mandar un Evento para que cambie a Seek State
     }
 
 }
