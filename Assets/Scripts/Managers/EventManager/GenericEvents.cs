@@ -1,5 +1,11 @@
 public enum GenericEvents
 {
     GenericDebug,
-    ChangeState
+    ChangeState,
+    BuyUnitDwarf,
+    BuyUnitGoblin,
+    DisableButtomDwarf,
+    DisableButtomGoblin,
+    TurnOnStartButtom,
+    StartBattle,
 }

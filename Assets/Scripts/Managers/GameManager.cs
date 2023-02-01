@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour , IUpdate
+public class GameManager : MonoBehaviour , IUpdate , IEventListener
 {
 
 
@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour , IUpdate
     private int currentIndexGoblin = 0;
     private int _maxGoblinToSpawn = 5;
 
+    private bool canStartBattle;
+
+    private void Awake()
+    {
+        OnEnableListenerSubscriptions();
+    }
     private void Start()
     {
         UpdateManager.Instance.AddUpdate(this);
@@ -36,38 +42,48 @@ public class GameManager : MonoBehaviour , IUpdate
 
     public void OnUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-           if(currentIndexDwarf < _maxDwarfToSpawnDwarf && _dwarfPositionSpawn.Count >0)
-           {
-                int randomIndex = Random.Range(0,_dwarfPositionSpawn.Count);
-                Vector3 spawnPos = _dwarfPositionSpawn[randomIndex].position;
-                Instantiate(dwarf, spawnPos, Quaternion.identity);
-                _dwarfPositionSpawn.RemoveAt(randomIndex);
-                currentIndexDwarf++;
-           }
-           else
-           {
-                Debug.Log("No more positions available to spawn objects");
-           }
-        }
+        if (currentIndexDwarf == 4) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
+        if (currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomGoblin); }
 
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            if (currentIndexGoblin < _maxGoblinToSpawn && _goblinPositionSpawn.Count > 0)
-            {
-                int randomIndex = Random.Range(0, _goblinPositionSpawn.Count);
-                Vector3 spawnPos = _goblinPositionSpawn[randomIndex].position;
-                Instantiate(goblin, spawnPos, Quaternion.identity);
-                _goblinPositionSpawn.RemoveAt(randomIndex);
-                currentIndexGoblin++;
-            }
-            else
-            {
-                Debug.Log("No more positions available to spawn objects");
-            }
-        }
+        if (currentIndexDwarf == 4 && currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }           
+        
+    }
 
+
+
+
+
+    public void OnEnableListenerSubscriptions()
+    {
+        EventManager.StartListening(GenericEvents.BuyUnitDwarf,BuyUnitDwarf);
+        EventManager.StartListening(GenericEvents.BuyUnitGoblin, BuyUnitGoblin);
+    }
+    public void OnDisableListenerSubscriptions()
+    {
+        EventManager.StopListering(GenericEvents.BuyUnitDwarf, BuyUnitDwarf);
+        EventManager.StopListering(GenericEvents.BuyUnitGoblin, BuyUnitGoblin);
+    }
+    private void BuyUnitDwarf(Hashtable obj)
+    {
+        if (currentIndexDwarf < _maxDwarfToSpawnDwarf && _dwarfPositionSpawn.Count > 0)
+        {
+            int randomIndex = Random.Range(0, _dwarfPositionSpawn.Count);
+            Vector3 spawnPos = _dwarfPositionSpawn[randomIndex].position;
+            Instantiate(dwarf, spawnPos, Quaternion.identity);
+            _dwarfPositionSpawn.RemoveAt(randomIndex);
+            currentIndexDwarf++;
+        }        
+    }
+    private void BuyUnitGoblin(Hashtable obj)
+    {
+        if (currentIndexGoblin < _maxGoblinToSpawn && _goblinPositionSpawn.Count > 0)
+        {
+            int randomIndex = Random.Range(0, _goblinPositionSpawn.Count);
+            Vector3 spawnPos = _goblinPositionSpawn[randomIndex].position;
+            Instantiate(goblin, spawnPos, Quaternion.identity);
+            _goblinPositionSpawn.RemoveAt(randomIndex);
+            currentIndexGoblin++;
+        }        
     }
 
 }

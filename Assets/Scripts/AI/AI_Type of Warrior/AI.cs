@@ -29,9 +29,10 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
     public virtual void Awake()
     {      
         
-       animator = GetComponent<Animator>();      
+       animator = GetComponent<Animator>();
+       
 
-       OnEnableListenerSubscriptions();
+        OnEnableListenerSubscriptions();
     }
 
     private void Start()
@@ -51,11 +52,15 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
         fsm = new FSM<string>(_idleState);
 
-        _navMeshAgent = GetComponent<NavMeshAgent>();       
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+       
     }
 
     public virtual void OnUpdate()
-    { }
+    {
+     
+    }
 
     private void TransitionState(Hashtable data)
     {

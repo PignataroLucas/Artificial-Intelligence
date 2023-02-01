@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class Generic_Warrior : AI
 {
-    
 
-
+   
     public override void OnUpdate()
     {
         fsm.OnUpdate();
         Debug.Log(fsm.current);
-        
 
-        if(_genericSO.Class == TypeOfWarriors.Dwarf)
+        if (_genericSO.Class == TypeOfWarriors.Dwarf)
         {
             enemiesInRandius = Physics.OverlapSphere(transform.position, _genericSO.detectionRadius, goblin);
             target = GameObject.FindGameObjectsWithTag("Goblin");
@@ -35,8 +33,10 @@ public class Generic_Warrior : AI
 
         }
 
+        if (enemyTarget == null) return;
 
         transform.LookAt(enemyTarget.transform.position);
+
     }
 
    
