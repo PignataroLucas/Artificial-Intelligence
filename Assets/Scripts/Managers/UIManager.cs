@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour , IEventListener
     {
         OnEnableListenerSubscriptions();
     }
-
     public void BuyDwarfEvent()
     {
         EventManager.TriggerEvent(GenericEvents.BuyUnitDwarf);
@@ -33,15 +32,14 @@ public class UIManager : MonoBehaviour , IEventListener
         EventManager.StartListening(GenericEvents.DisableButtomDwarf, DisableButtomDwarf);
         EventManager.StartListening(GenericEvents.DisableButtomGoblin, DisableButtomGoblin);
         EventManager.StartListening(GenericEvents.TurnOnStartButtom, TurnOnStartButtom);
-    }
-    private void TurnOnStartButtom(Hashtable obj)
-    {
-        startButtom.SetActive(true);
-    }
+        EventManager.StartListening(GenericEvents.DisableStartButtom, TurnOfStartButtom);
+    }  
     public void OnDisableListenerSubscriptions()
     {
         EventManager.StopListering(GenericEvents.DisableButtomDwarf, DisableButtomDwarf);
         EventManager.StopListering(GenericEvents.DisableButtomGoblin, DisableButtomGoblin);
+        EventManager.StopListering(GenericEvents.TurnOnStartButtom, TurnOnStartButtom);
+        EventManager.StopListering(GenericEvents.DisableStartButtom, TurnOfStartButtom);
     }
     private void DisableButtomDwarf(Hashtable obj)
     {
@@ -51,4 +49,14 @@ public class UIManager : MonoBehaviour , IEventListener
     {
         goblinButton.SetActive(false);
     }
+    private void TurnOnStartButtom(Hashtable obj)
+    {
+        startButtom.SetActive(true);
+    }
+    private void TurnOfStartButtom(Hashtable obj)
+    {
+        EventManager.StopListering(GenericEvents.TurnOnStartButtom, TurnOnStartButtom);        
+        startButtom.SetActive(false);
+    }
+
 }

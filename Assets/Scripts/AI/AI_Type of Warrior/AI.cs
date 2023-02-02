@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
+
 
 
 public abstract class AI : MonoBehaviour, IUpdate , IEventListener
@@ -59,7 +58,7 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
     public virtual void OnUpdate()
     {
-     
+      
     }
 
     private void TransitionState(Hashtable data)
@@ -104,14 +103,46 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
     public void OnEnableListenerSubscriptions()
     {
-        EventManager.StartListening(GenericEvents.ChangeState, TransitionState);       
-    }    
+        EventManager.StartListening(GenericEvents.ChangeState, TransitionState);
+        EventManager.StartListening(GenericEvents.RandomTargets, SetRandomTarget);
+        EventManager.StartListening(GenericEvents.ChangeToSeekState, ChangeToSeekState);
+    }
+
 
     public void OnDisableListenerSubscriptions()
     {
-        EventManager.StartListening(GenericEvents.ChangeState, TransitionState);
+        EventManager.StopListering(GenericEvents.ChangeState, TransitionState);
+        EventManager.StopListering(GenericEvents.RandomTargets, SetRandomTarget);
+        EventManager.StopListering(GenericEvents.ChangeToSeekState, ChangeToSeekState);
     }
 
+    private void SetRandomTarget(Hashtable obj)
+    {
+        if (_genericSO.Class == TypeOfWarriors.Dwarf)
+        {            
+            if (enemyTarget == null)
+            {
+                int randomIndex = Random.Range(0, target.Length);
+                enemyTarget = target[randomIndex];
+            }
+        }
+        else if (_genericSO.Class == TypeOfWarriors.Goblin)
+        {
+            if (enemyTarget == null)
+            {
+                int randomIndex = Random.Range(0, target.Length);
+                enemyTarget = target[randomIndex];
+            }
+
+        }
+    }
+    private void ChangeToSeekState(Hashtable obj)
+    {
+        EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+            { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
+            { GameplayHashtableParameters.Agent.ToString(), this }
+            });
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

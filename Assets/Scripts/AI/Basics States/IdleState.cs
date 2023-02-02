@@ -24,13 +24,13 @@ public class IdleState <T> : States<T>
     public override void OnUpdate()
     {       
 
-        if(Input.GetKeyDown(KeyCode.R)) 
+        /*if(Input.GetKeyDown(KeyCode.R)) 
         {           
             EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
             { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
             { GameplayHashtableParameters.Agent.ToString(), _ai }
             });
-        }
+        }*/
 
     }
 

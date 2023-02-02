@@ -8,4 +8,7 @@ public enum GenericEvents
     DisableButtomGoblin,
     TurnOnStartButtom,
     StartBattle,
+    RandomTargets,
+    DisableStartButtom,
+    ChangeToSeekState,
 }

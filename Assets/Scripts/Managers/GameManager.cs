@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
     private int currentIndexGoblin = 0;
     private int _maxGoblinToSpawn = 5;
 
-    private bool canStartBattle;
+   
 
     private void Awake()
     {
@@ -47,10 +47,6 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
         if (currentIndexDwarf == 4 && currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
     }
-
-
-
-
 
     public void OnEnableListenerSubscriptions()
     {
@@ -88,11 +84,11 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
     }
 
     private void StartBattle(Hashtable obj)
-    {
-        Debug.Log("Empieza la batalla");
-        //Aca deberia Mandar un evento a generic Warrior para que se asigne el target de forrma random
-        //Desabilitar el boton de Start
-        //Mandar un Evento para que cambie a Seek State
+    {      
+        EventTriggers.TriggerEvent(GenericEvents.RandomTargets);
+        EventTriggers.TriggerEvent(GenericEvents.DisableStartButtom);
+        EventTriggers.TriggerEvent(GenericEvents.ChangeToSeekState);
+        //Mandar un Evento notificando a AI que puede cambiar al estado Seek State
     }
 
 }
