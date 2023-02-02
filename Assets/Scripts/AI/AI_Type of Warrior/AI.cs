@@ -26,12 +26,9 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
     public NavMeshAgent _navMeshAgent;
     public virtual void Awake()
-    {      
-        
+    {       
        animator = GetComponent<Animator>();
-       
-
-        OnEnableListenerSubscriptions();
+       OnEnableListenerSubscriptions();
     }
 
     private void Start()
@@ -42,7 +39,6 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
         _idleAttackState = new IdleAttackState<string>(this);
         _attackState = new AttackState<string>(this);
         _seekState = new SeekState<string>(this);
-
         
         _idleAttackState.SetTransition(State.Attack, _attackState);
         _attackState.SetTransition(State.IdleAttack, _idleAttackState);
@@ -51,16 +47,10 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
 
         fsm = new FSM<string>(_idleState);
 
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-
-       
+        _navMeshAgent = GetComponent<NavMeshAgent>();       
     }
 
-    public virtual void OnUpdate()
-    {
-      
-    }
-
+    public virtual void OnUpdate() { }
     private void TransitionState(Hashtable data)
     {
         string state = data[GameplayHashtableParameters.ChangeState.ToString()].ToString();
@@ -72,50 +62,39 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
             fsm.Transition(state);           
         } 
     }
-
     public  virtual void SetTarget()
     {
 
     }
-
     public void LoopAnimations() 
     {       
         _idleState.SetTransitionAnim();  
     }
-
     public void Attack()
     {
         _idleAttackState.ToAttackState();
     }
-
     public void ToIdleAttack()
     {
         _attackState.ToIdleAttackState();
     }
-
     private void OnDisable()
     {
         UpdateManager.Instance.RemoveUpdate(this);
         OnDisableListenerSubscriptions();
     }
-
-   
-
     public void OnEnableListenerSubscriptions()
     {
         EventManager.StartListening(GenericEvents.ChangeState, TransitionState);
         EventManager.StartListening(GenericEvents.RandomTargets, SetRandomTarget);
         EventManager.StartListening(GenericEvents.ChangeToSeekState, ChangeToSeekState);
     }
-
-
     public void OnDisableListenerSubscriptions()
     {
         EventManager.StopListering(GenericEvents.ChangeState, TransitionState);
         EventManager.StopListering(GenericEvents.RandomTargets, SetRandomTarget);
         EventManager.StopListering(GenericEvents.ChangeToSeekState, ChangeToSeekState);
     }
-
     private void SetRandomTarget(Hashtable obj)
     {
         if (_genericSO.Class == TypeOfWarriors.Dwarf)

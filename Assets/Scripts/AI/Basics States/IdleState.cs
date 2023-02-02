@@ -12,26 +12,11 @@ public class IdleState <T> : States<T>
 
     public override void OnEnter()
     {
-       SetTransitionAnim();        
+        SetTransitionAnim();
     }
-
     public void SetTransitionAnim()
     {         
         _ai.animator.SetInteger("idleType", Random.Range(0, 4));
         _ai.animator.SetBool("canIdle", true);        
     }
-
-    public override void OnUpdate()
-    {       
-
-        /*if(Input.GetKeyDown(KeyCode.R)) 
-        {           
-            EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
-            { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
-            { GameplayHashtableParameters.Agent.ToString(), _ai }
-            });
-        }*/
-
-    }
-
 }
