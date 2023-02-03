@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goblin
   - Dwarf
+  - Grid
   layers:
   - Default
   - TransparentFX

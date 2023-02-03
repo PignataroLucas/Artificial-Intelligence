@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
 
 
-public abstract class AI : MonoBehaviour, IUpdate , IEventListener
+public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 {
 
     public FSM<string> fsm;
@@ -25,6 +27,10 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
     public Collider [] enemiesInRandius; 
 
     public NavMeshAgent _navMeshAgent;
+
+    public BoxQuery boxQuery;    
+    public event System.Action<IGridEntity> OnMove;
+
     public virtual void Awake()
     {       
        animator = GetComponent<Animator>();
@@ -122,6 +128,16 @@ public abstract class AI : MonoBehaviour, IUpdate , IEventListener
             { GameplayHashtableParameters.Agent.ToString(), this }
             });
     }
+
+    public IEnumerable<Generic_Warrior> Detect()
+    {
+        var detectedWarriors = boxQuery.Query().OfType<Generic_Warrior>();       
+        return detectedWarriors;
+    }
+
+
+
+    public Vector3 Position { get => transform.position; set => transform.position = value; }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

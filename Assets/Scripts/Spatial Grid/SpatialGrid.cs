@@ -1,102 +1,121 @@
-using System;
-using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class SpatialGrid : MonoBehaviour
-{
+public class SpatialGrid : MonoBehaviour {
+
+    #region Variables
 
     public bool showGrid;
 
+    //punto de inicio de la grilla en X
     public float x;
+
+    //punto de inicio de la grilla en Z
     public float z;
 
+    //ancho de las celdas
     public float cellWidth;
+
+    //alto de las celdas
     public float cellHeight;
 
+    //cantidad de columnas (el "ancho" de la grilla)
     public int width;
+
+    //cantidad de filas (el "alto" de la grilla)
     public int height;
 
-    private Dictionary<IGridEntity,Tuple<int,int>> _lastPosition = new Dictionary<IGridEntity, Tuple<int, int>>();
+    //ultimas posiciones conocidas de los elementos, guardadas para comparación.
+    private Dictionary<IGridEntity, Tuple<int, int>> lastPositions = new Dictionary<IGridEntity, Tuple<int, int>>();
 
-    private HashSet<IGridEntity>[,] _buckets;
+    //los "contenedores"
+    private HashSet<IGridEntity>[,] buckets;
 
-    readonly public Tuple<int,int> Outside = Tuple.Create(-1 , -1);
+    //el valor de posicion que tienen los elementos cuando no estan en la zona de la grilla.
+    /*
+     Const es implicitamente statica
+     const tengo que ponerle el valor apenas la declaro, readonly puedo hacerlo en el constructor.
+     Const solo sirve para tipos de dato primitivos.
+     */
+    readonly public Tuple<int, int> Outside = Tuple.Create(-1, -1);
 
-    readonly public IGridEntity[] Empty= new IGridEntity[0];
+    //Una colección vacía a devolver en las queries si no hay nada que devolver
+    readonly public IGridEntity[] Empty = new IGridEntity[0];
 
+    #endregion
 
-    private void Awake()
-    {
-        _buckets = new HashSet<IGridEntity>[width , height];
+    #region Funciones
 
+    private void Awake() {
+        buckets       = new HashSet<IGridEntity>[width, height];
 
-        for (var i = 0; i < width; i++)
-        {
-            for (int j = 0; i < height; j++)
-            {
-                _buckets[i, j] = new HashSet<IGridEntity>();
+        //creamos todos los hashsets
+        for (var i = 0; i < width; i++) {
+            for (var j = 0; j < height; j++) {
+                buckets[i, j] = new HashSet<IGridEntity>();
             }
         }
 
         var ents = RecursiveWalker(transform)
-                    .Select(n => n.GetComponent<IGridEntity>())
-                    .Where(n => n != null);
+                  .Select(n => n.GetComponent<IGridEntity>())
+                  .Where(n => n != null);
 
-
-        foreach (var item in ents)
-        {
-            item.OnEntityAdded += UpdateEntity;
-            UpdateEntity(item);
+        foreach (var e in ents) {
+            e.OnMove += UpdateEntity;
+            UpdateEntity(e);
         }
     }
-
-
+    
     private void Update()
     {
-        for (var i = 0; i < width; i++)
-        {
-            for (int j = 0; i < height; j++)
-            {
-                _buckets[i, j] = new HashSet<IGridEntity>();
-            }
-        }
-
         var ents = RecursiveWalker(transform)
                     .Select(n => n.GetComponent<IGridEntity>())
                     .Where(n => n != null);
-
-
-        foreach (var item in ents)
+        foreach (var e in ents)
         {
-            item.OnEntityAdded += UpdateEntity;
-            UpdateEntity(item);
+            e.OnMove += UpdateEntity;
+            UpdateEntity(e);
         }
     }
 
-    public void UpdateEntity(IGridEntity entity)
-    {
-        var lastPos = _lastPosition.ContainsKey(entity) ? _lastPosition[entity] : Outside;
+    public void UpdateEntity(IGridEntity entity) {
+        var lastPos    = lastPositions.ContainsKey(entity) ? lastPositions[entity] : Outside;
         var currentPos = GetPositionInGrid(entity.Position);
 
-        if (lastPos.Equals(currentPos)) return;
+        //Misma posición, no necesito hacer nada
+        if (lastPos.Equals(currentPos))
+            return;
 
-        if (IsInsideGrid(lastPos)) _buckets[currentPos.Item1,currentPos.Item2].Add(entity);
-        else { _lastPosition.Remove(entity); }
+        //Lo "sacamos" de la posición anterior
+        if (IsInsideGrid(lastPos)) {
+            buckets[lastPos.Item1, lastPos.Item2].Remove(entity);
+        }
+
+        //Lo "metemos" a la celda nueva, o lo sacamos si salio de la grilla
+        if (IsInsideGrid(currentPos)) {
+            buckets[currentPos.Item1, currentPos.Item2].Add(entity);
+            lastPositions[entity] = currentPos;
+        }
+        else
+            lastPositions.Remove(entity);
     }
 
-    public IEnumerable <IGridEntity> Query (Vector3 aabbFrom, Vector3 aabbTo , Func<Vector3,bool> filterByPosition)
-    {
+    public IEnumerable<IGridEntity> Query(Vector3 aabbFrom, Vector3 aabbTo, Func<Vector3, bool> filterByPosition) {
         var from = new Vector3(Mathf.Min(aabbFrom.x, aabbTo.x), 0, Mathf.Min(aabbFrom.z, aabbTo.z));
-        var to = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), 0, Mathf.Max(aabbFrom.z, aabbTo.z));
+        var to   = new Vector3(Mathf.Max(aabbFrom.x, aabbTo.x), 0, Mathf.Max(aabbFrom.z, aabbTo.z));
 
         var fromCoord = GetPositionInGrid(from);
-        var toCoord = GetPositionInGrid(to);
+        var toCoord   = GetPositionInGrid(to);
 
         fromCoord = Tuple.Create(Util.Clamp(fromCoord.Item1, 0, width), Util.Clamp(fromCoord.Item2, 0, height));
-        toCoord = Tuple.Create(Util.Clamp(toCoord.Item1, 0, width), Util.Clamp(toCoord.Item2, 0, height));
+        toCoord   = Tuple.Create(Util.Clamp(toCoord.Item1,   0, width), Util.Clamp(toCoord.Item2,   0, height));
 
+        if (!IsInsideGrid(fromCoord) && !IsInsideGrid(toCoord))
+            return Empty;
 
+        // Creamos tuplas de cada celda
         var cols = Util.Generate(fromCoord.Item1, x => x + 1)
                        .TakeWhile(n => n < width && n <= toCoord.Item1);
 
@@ -109,11 +128,9 @@ public class SpatialGrid : MonoBehaviour
                                                       )
                                    );
 
-
-
-
+        // Iteramos las que queden dentro del criterio
         return cells
-              .SelectMany(cell => _buckets[cell.Item1, cell.Item2])
+              .SelectMany(cell => buckets[cell.Item1, cell.Item2])
               .Where(e =>
                          from.x <= e.Position.x && e.Position.x <= to.x &&
                          from.z <= e.Position.z && e.Position.z <= to.z
@@ -121,43 +138,46 @@ public class SpatialGrid : MonoBehaviour
               .Where(n => filterByPosition(n.Position));
     }
 
-
-    public Tuple<int, int> GetPositionInGrid(Vector3 pos)
-    {        
+    public Tuple<int, int> GetPositionInGrid(Vector3 pos) {
+        //quita la diferencia, divide segun las celdas y floorea
         return Tuple.Create(Mathf.FloorToInt((pos.x - x) / cellWidth),
                             Mathf.FloorToInt((pos.z - z) / cellHeight));
     }
 
-    public bool IsInsideGrid(Tuple<int, int> position)
-    {        
+    public bool IsInsideGrid(Tuple<int, int> position) {
+        //si es menor a 0 o mayor a width o height, no esta dentro de la grilla
         return 0 <= position.Item1 && position.Item1 < width &&
                0 <= position.Item2 && position.Item2 < height;
     }
 
-    void OnDestroy()
-    {
+    void OnDestroy() {
         var ents = RecursiveWalker(transform).Select(n => n.GetComponent<IGridEntity>())
                                              .Where(n => n != null);
-
-        foreach (var e in ents) e.OnEntityAdded -= UpdateEntity;
+        
+        foreach (var e in ents) e.OnMove -= UpdateEntity;
     }
 
-    private static IEnumerable<Transform> RecursiveWalker(Transform parent)
-    {
-        foreach (Transform child in parent)
-        {
+    #region GENERATORS
+
+    private static IEnumerable<Transform> RecursiveWalker(Transform parent) {
+        foreach (Transform child in parent) {
             foreach (Transform grandchild in RecursiveWalker(child))
                 yield return grandchild;
             yield return child;
         }
     }
 
+    #endregion
+
+    #endregion
+
+    #region GRAPHIC REPRESENTATION
+
     public bool areGizmosShutDown;
     public bool activatedGrid;
     public bool showLogs = true;
 
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
 
         if (showGrid)
         {
@@ -181,7 +201,7 @@ public class SpatialGrid : MonoBehaviour
                 Gizmos.DrawLine(elem.Item1, elem.Item2);
             }
         }
-
+        
         /*
             if (buckets == null || areGizmosShutDown) return;
 
@@ -225,4 +245,5 @@ public class SpatialGrid : MonoBehaviour
         */
     }
 
+    #endregion
 }

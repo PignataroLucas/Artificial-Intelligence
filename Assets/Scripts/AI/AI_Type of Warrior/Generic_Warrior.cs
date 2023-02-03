@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Generic_Warrior : AI 
@@ -22,12 +23,22 @@ public class Generic_Warrior : AI
             target = GameObject.FindGameObjectsWithTag("Dwarf");
         }
 
+        CanDetect();
+
+
+
         if (enemyTarget == null) return;
 
         transform.LookAt(enemyTarget.transform.position);
+    }
 
+    public void CanDetect()
+    {
+        var n = Detect();        
     }
 
    
+
+
 
 }

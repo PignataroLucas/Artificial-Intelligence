@@ -1,11 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public interface IGridEntity 
-{    
-    event Action <IGridEntity> OnEntityAdded;
+public interface IGridEntity {
+
+    event Action<IGridEntity> OnMove;
 
     Vector3 Position { get; set; }
+        
 }

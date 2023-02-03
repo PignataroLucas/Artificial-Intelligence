@@ -364,15 +364,31 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 228035310}
-  - component: {fileID: 228035309}
+  - component: {fileID: 228035311}
   m_Layer: 0
   m_Name: SpatialGrid
-  m_TagString: Untagged
+  m_TagString: Grid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &228035309
+--- !u!4 &228035310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228035308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.4863, y: 3.8, z: 0.6635322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 647820}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &228035311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,31 +401,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGrid: 1
-  x: -24.3
-  z: -24.6
-  cellWidth: 8
-  cellHeight: 8
-  width: 5
-  height: 5
+  x: -29.3
+  z: -27.43
+  cellWidth: 5
+  cellHeight: 5
+  width: 10
+  height: 10
   areGizmosShutDown: 0
   activatedGrid: 0
   showLogs: 1
---- !u!4 &228035310
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228035308}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.4863, y: 3.504875, z: 0.6635322}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 647820}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274411453
 GameObject:
   m_ObjectHideFlags: 0
