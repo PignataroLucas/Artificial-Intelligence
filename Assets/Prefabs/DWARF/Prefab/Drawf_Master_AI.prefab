@@ -1186,15 +1186,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948074680631151237}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.66446304, y: -0.24184473, z: -0.24184473, w: 0.66446304}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 948074680630662841}
   m_Father: {fileID: 948074680630662945}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -40}
 --- !u!1 &948074680631151239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,9 +1282,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948074680631151243}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 17.220856, y: 17.220856, z: 17.220856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 948074680630662945}
@@ -2157,7 +2157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 948074680630663001}
   - component: {fileID: 948074680627971597}
-  - component: {fileID: 2032425526995671183}
+  - component: {fileID: 6632516073145084703}
   m_Layer: 0
   m_Name: 'Hamer Dwarf Master '
   m_TagString: Untagged
@@ -2172,9 +2172,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948074680631151289}
-  m_LocalRotation: {x: -0.7071068, y: -3.4332966e-15, z: 0.000000042146848, w: 0.7071067}
-  m_LocalPosition: {x: 0.93996006, y: 0.7789851, z: 0.45861053}
-  m_LocalScale: {x: 17.220856, y: 17.220856, z: 17.220856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.523, z: 0.341}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 948074680630662945}
@@ -2333,7 +2333,7 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0030447852, y: 0.0012945626, z: -0.004837839}
     m_Extent: {x: 0.0007290973, y: 0.004280154, z: 0.0015503718}
   m_DirtyAABB: 0
---- !u!114 &2032425526995671183
+--- !u!114 &6632516073145084703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2342,12 +2342,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 948074680631151289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ec053db709c8343a4db59c8f39cd76, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c1aa306a7ed8244490dfec76287f640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetGrid: {fileID: 0}
-  width: 1
-  heigth: 1
+  radius: 2.05
+  angle: 28.24
 --- !u!1 &948074680631151291
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,7 +5055,7 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   enemiesInRandius: []
   _navMeshAgent: {fileID: 5040820726932551878}
-  boxQuery: {fileID: 2032425526995671183}
+  coneQuery: {fileID: 6632516073145084703}
 --- !u!95 &948074681041473912
 Animator:
   serializedVersion: 4

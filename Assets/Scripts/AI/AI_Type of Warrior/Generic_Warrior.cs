@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Generic_Warrior : AI 
@@ -10,7 +7,7 @@ public class Generic_Warrior : AI
     public override void OnUpdate()
     {
         fsm.OnUpdate();
-        Debug.Log(fsm.current);
+        //Debug.Log(fsm.current);
 
         if (_genericSO.Class == TypeOfWarriors.Dwarf)
         {
@@ -24,8 +21,6 @@ public class Generic_Warrior : AI
         }
 
         CanDetect();
-
-
 
         if (enemyTarget == null) return;
 

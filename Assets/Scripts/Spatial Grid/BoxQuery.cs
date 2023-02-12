@@ -14,12 +14,12 @@ public class BoxQuery : MonoBehaviour , IQuery
 
     private void Awake()
     {
-        targetGrid = transform.parent.parent.parent.GetComponent<SpatialGrid>();
+       
     }
 
     public void Start()
     {
-       
+        targetGrid = transform.parent.parent.parent.parent.parent.GetComponent<SpatialGrid>();
     }
 
     public IEnumerable<IGridEntity> Query()

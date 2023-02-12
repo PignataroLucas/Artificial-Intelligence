@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &81480209873516942
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4511602529938193769}
+  m_Layer: 0
+  m_Name: FatherQuery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4511602529938193769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81480209873516942}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.86090255, y: 0.06540108, z: 0.14246076}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2859339151961541891}
+  m_Father: {fileID: 2859339151961541901}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2859339151961968769
 GameObject:
   m_ObjectHideFlags: 0
@@ -2721,6 +2753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2859339151961541891}
   - component: {fileID: 2859339151975636381}
+  - component: {fileID: 7350321880294577350}
   m_Layer: 0
   m_Name: ZolrikKnife
   m_TagString: Untagged
@@ -2735,14 +2768,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2859339151961968995}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.759381, y: 0.6826688, z: -0.24215099}
-  m_LocalScale: {x: 10000, y: 10000, z: 10000}
+  m_LocalRotation: {x: -0, y: 0.006583872, z: 0.99997836, w: 0}
+  m_LocalPosition: {x: 1.3529025, y: 0.51459885, z: -0.15246077}
+  m_LocalScale: {x: 10000, y: 10000.001, z: 10000.001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2859339151961541901}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_Father: {fileID: 4511602529938193769}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -179.246, y: 180, z: 0}
 --- !u!137 &2859339151975636381
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -2861,6 +2894,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.006334296, y: -0.0048889904, z: 0.0017576712}
     m_Extent: {x: 0.0010424727, y: 0.00024787895, z: 0.0037837727}
   m_DirtyAABB: 0
+--- !u!114 &7350321880294577350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2859339151961968995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1aa306a7ed8244490dfec76287f640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetGrid: {fileID: 0}
+  radius: 1.28
+  angle: 51.22
 --- !u!1 &2859339151961969001
 GameObject:
   m_ObjectHideFlags: 0
@@ -2960,7 +3008,7 @@ Transform:
   - {fileID: 2859339151961541817}
   - {fileID: 2859339151961541903}
   - {fileID: 2859339151961541889}
-  - {fileID: 2859339151961541891}
+  - {fileID: 4511602529938193769}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3008,6 +3056,7 @@ MonoBehaviour:
   enemyTarget: {fileID: 0}
   enemiesInRandius: []
   _navMeshAgent: {fileID: 1881732470211171262}
+  coneQuery: {fileID: 7350321880294577350}
 --- !u!195 &1881732470211171262
 NavMeshAgent:
   m_ObjectHideFlags: 0

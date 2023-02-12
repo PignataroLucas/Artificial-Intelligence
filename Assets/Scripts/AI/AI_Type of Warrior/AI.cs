@@ -28,7 +28,9 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
     public NavMeshAgent _navMeshAgent;
 
-    public BoxQuery boxQuery;    
+    //public BoxQuery boxQuery;
+    public ConeQuery coneQuery;
+
     public event System.Action<IGridEntity> OnMove;
 
     public virtual void Awake()
@@ -36,7 +38,6 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
        animator = GetComponent<Animator>();
        OnEnableListenerSubscriptions();
     }
-
     private void Start()
     {
         UpdateManager.Instance.AddUpdate(this);
@@ -55,7 +56,6 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
         _navMeshAgent = GetComponent<NavMeshAgent>();       
     }
-
     public virtual void OnUpdate() { }
     private void TransitionState(Hashtable data)
     {
@@ -128,15 +128,11 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
             { GameplayHashtableParameters.Agent.ToString(), this }
             });
     }
-
     public IEnumerable<Generic_Warrior> Detect()
     {
-        var detectedWarriors = boxQuery.Query().OfType<Generic_Warrior>();       
+        var detectedWarriors = coneQuery.Query().OfType<Generic_Warrior>();       
         return detectedWarriors;
     }
-
-
-
     public Vector3 Position { get => transform.position; set => transform.position = value; }
     private void OnDrawGizmosSelected()
     {

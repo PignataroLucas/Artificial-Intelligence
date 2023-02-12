@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
         if (currentIndexDwarf == 4 && currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
     }
-
     public void OnEnableListenerSubscriptions()
     {
         EventManager.StartListening(GenericEvents.BuyUnitDwarf,BuyUnitDwarf);
@@ -66,7 +65,8 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
         {
             int randomIndex = Random.Range(0, _dwarfPositionSpawn.Count);
             Vector3 spawnPos = _dwarfPositionSpawn[randomIndex].position;
-            Instantiate(dwarf, spawnPos, Quaternion.identity);
+            GameObject dwarfInstantiate = Instantiate(dwarf, spawnPos, Quaternion.identity);
+            dwarfInstantiate.transform.parent = _dwarfPositionSpawn[randomIndex];
             _dwarfPositionSpawn.RemoveAt(randomIndex);
             currentIndexDwarf++;
         }        
@@ -77,12 +77,12 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
         {
             int randomIndex = Random.Range(0, _goblinPositionSpawn.Count);
             Vector3 spawnPos = _goblinPositionSpawn[randomIndex].position;
-            Instantiate(goblin, spawnPos, Quaternion.identity);
+            GameObject goblinInstantiate =  Instantiate(goblin, spawnPos, Quaternion.identity);
+            goblinInstantiate.transform.parent =  _goblinPositionSpawn[randomIndex];
             _goblinPositionSpawn.RemoveAt(randomIndex);
             currentIndexGoblin++;
         }        
     }
-
     private void StartBattle(Hashtable obj)
     {      
         EventTriggers.TriggerEvent(GenericEvents.RandomTargets);
