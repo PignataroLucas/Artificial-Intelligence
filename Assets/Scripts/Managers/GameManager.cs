@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
         EventTriggers.TriggerEvent(GenericEvents.RandomTargets);
         EventTriggers.TriggerEvent(GenericEvents.DisableStartButtom);
         EventTriggers.TriggerEvent(GenericEvents.ChangeToSeekState);
-        //Mandar un Evento notificando a AI que puede cambiar al estado Seek State
     }
 
 }

@@ -36,7 +36,7 @@ public class SeekState <T> : States <T>
         }
 
         _ai.transform.LookAt(_ai.enemyTarget.transform.position);
-        _ai._navMeshAgent.destination = _ai.enemyTarget.transform.position;
+        _ai.navMeshAgent.destination = _ai.enemyTarget.transform.position;
 
     }
 

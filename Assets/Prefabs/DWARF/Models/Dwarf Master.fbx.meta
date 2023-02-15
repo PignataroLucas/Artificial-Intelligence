@@ -1341,6 +1341,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.6720252
+        functionName: Detect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1372,6 +1379,13 @@ ModelImporter:
       events:
       - time: 1
         functionName: ToIdleAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6463025
+        functionName: Detect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -1413,6 +1427,13 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.36012882
+        functionName: Detect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -1444,6 +1465,20 @@ ModelImporter:
       events:
       - time: 1
         functionName: ToIdleAttack
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.47588453
+        functionName: Detect
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.74598116
+        functionName: Detect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

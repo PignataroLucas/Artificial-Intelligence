@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-
-
-
 public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 {
 
-    public FSM<string> fsm;
+    public FSM<string> Fsm;
 
     private IdleState<string> _idleState;
     private IdleAttackState<string> _idleAttackState;
     private AttackState<string> _attackState;
     private SeekState<string> _seekState;
-
-    public Generic_Unit_SO _genericSO;
+    
+    public Generic_Unit_SO genericSo;
 
     public Animator animator;
 
@@ -26,10 +23,11 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     public GameObject enemyTarget;
     public Collider [] enemiesInRandius; 
 
-    public NavMeshAgent _navMeshAgent;
-
-    //public BoxQuery boxQuery;
+    public NavMeshAgent navMeshAgent;
+    
     public ConeQuery coneQuery;
+
+    public int life;
 
     public event System.Action<IGridEntity> OnMove;
 
@@ -52,9 +50,12 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         _idleState.SetTransition(State.Seek, _seekState);
         _seekState.SetTransition(State.IdleAttack, _idleAttackState);
 
-        fsm = new FSM<string>(_idleState);
+        Fsm = new FSM<string>(_idleState);
 
-        _navMeshAgent = GetComponent<NavMeshAgent>();       
+        navMeshAgent = GetComponent<NavMeshAgent>(); 
+        
+        life = Random.Range(20,40);
+        
     }
     public virtual void OnUpdate() { }
     private void TransitionState(Hashtable data)
@@ -65,7 +66,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
         if (ai == this) {
 
-            fsm.Transition(state);           
+            Fsm.Transition(state);           
         } 
     }
     public  virtual void SetTarget()
@@ -103,7 +104,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     }
     private void SetRandomTarget(Hashtable obj)
     {
-        if (_genericSO.Class == TypeOfWarriors.Dwarf)
+        if (genericSo.Class == TypeOfWarriors.Dwarf)
         {            
             if (enemyTarget == null)
             {
@@ -111,14 +112,13 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
                 enemyTarget = target[randomIndex];
             }
         }
-        else if (_genericSO.Class == TypeOfWarriors.Goblin)
+        else if (genericSo.Class == TypeOfWarriors.Goblin)
         {
             if (enemyTarget == null)
             {
                 int randomIndex = Random.Range(0, target.Length);
                 enemyTarget = target[randomIndex];
             }
-
         }
     }
     private void ChangeToSeekState(Hashtable obj)
@@ -130,15 +130,35 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     }
     public IEnumerable<Generic_Warrior> Detect()
     {
-        var detectedWarriors = coneQuery.Query().OfType<Generic_Warrior>();       
+        IEnumerable<Generic_Warrior> detectedWarriors = Enumerable.Empty<Generic_Warrior>();
+        if (genericSo.Class == TypeOfWarriors.Dwarf)
+        {
+             detectedWarriors = coneQuery.Query()
+                 .OfType<Generic_Warrior>()
+                 .Where(w => w.genericSo.Class == TypeOfWarriors.Goblin );
+
+             foreach (var warrior in detectedWarriors)
+             {
+                 int damage = Random.Range(1, 15);
+                 warrior.life -= damage;
+             }
+        }
+        else if (genericSo.Class == TypeOfWarriors.Goblin)
+        {
+            detectedWarriors = coneQuery.Query()
+                .OfType<Generic_Warrior>()
+                .Where(w => w.genericSo.Class == TypeOfWarriors.Dwarf );
+        }
         return detectedWarriors;
     }
     public Vector3 Position { get => transform.position; set => transform.position = value; }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _genericSO.detectionRadius);
+        Gizmos.DrawWireSphere(transform.position, genericSo.detectionRadius);
 
     }
 
+    
+    
 }

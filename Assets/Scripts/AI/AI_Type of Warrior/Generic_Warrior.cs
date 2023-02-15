@@ -2,38 +2,35 @@ using UnityEngine;
 
 public class Generic_Warrior : AI 
 {
-
-   
     public override void OnUpdate()
     {
-        fsm.OnUpdate();
+        Fsm.OnUpdate();
         //Debug.Log(fsm.current);
-
-        if (_genericSO.Class == TypeOfWarriors.Dwarf)
+        if (genericSo.Class == TypeOfWarriors.Dwarf)
         {
-            enemiesInRandius = Physics.OverlapSphere(transform.position, _genericSO.detectionRadius, goblin);
+            enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, goblin);
             target = GameObject.FindGameObjectsWithTag("Goblin");           
         }
-        else if (_genericSO.Class == TypeOfWarriors.Goblin)
+        else if (genericSo.Class == TypeOfWarriors.Goblin)
         {
-            enemiesInRandius = Physics.OverlapSphere(transform.position, _genericSO.detectionRadius, dwarf);
+            enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, dwarf);
             target = GameObject.FindGameObjectsWithTag("Dwarf");
+            if (this.life <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
-
-        CanDetect();
+        
+        // CanDetect();
 
         if (enemyTarget == null) return;
 
         transform.LookAt(enemyTarget.transform.position);
     }
 
-    public void CanDetect()
+    /*private void CanDetect()
     {
         var n = Detect();        
-    }
-
-   
-
-
+    }*/
 
 }

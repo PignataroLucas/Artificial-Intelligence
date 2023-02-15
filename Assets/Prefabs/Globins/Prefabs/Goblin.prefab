@@ -3044,7 +3044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3392b70f65e217543bccad52b24d78c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _genericSO: {fileID: 11400000, guid: 3256adf59c89612479cce4771fced00d, type: 2}
+  genericSo: {fileID: 11400000, guid: 3256adf59c89612479cce4771fced00d, type: 2}
   animator: {fileID: 8841848423008061410}
   goblin:
     serializedVersion: 2
@@ -3055,7 +3055,7 @@ MonoBehaviour:
   target: []
   enemyTarget: {fileID: 0}
   enemiesInRandius: []
-  _navMeshAgent: {fileID: 1881732470211171262}
+  navMeshAgent: {fileID: 1881732470211171262}
   coneQuery: {fileID: 7350321880294577350}
 --- !u!195 &1881732470211171262
 NavMeshAgent:
