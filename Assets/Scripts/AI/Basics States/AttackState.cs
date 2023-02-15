@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState <T> : States<T>
@@ -32,9 +31,5 @@ public class AttackState <T> : States<T>
 
        _ai.animator.SetBool("canAttack", false);
        _ai.animator.SetBool("ToIdleAttack", true);
-
     }
-
-
-
 }

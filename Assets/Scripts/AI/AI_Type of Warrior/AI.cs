@@ -12,7 +12,8 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     private IdleAttackState<string> _idleAttackState;
     private AttackState<string> _attackState;
     private SeekState<string> _seekState;
-    
+    protected DeadState<string> _deadState;
+
     public Generic_Unit_SO genericSo;
 
     public Animator animator;
@@ -44,11 +45,15 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         _idleAttackState = new IdleAttackState<string>(this);
         _attackState = new AttackState<string>(this);
         _seekState = new SeekState<string>(this);
+        _deadState = new DeadState<string>(this);
         
+        _attackState.SetTransition(State.Dead,_deadState);
+        _idleAttackState.SetTransition(State.Dead,_deadState);
         _idleAttackState.SetTransition(State.Attack, _attackState);
         _attackState.SetTransition(State.IdleAttack, _idleAttackState);
         _idleState.SetTransition(State.Seek, _seekState);
         _seekState.SetTransition(State.IdleAttack, _idleAttackState);
+        
 
         Fsm = new FSM<string>(_idleState);
 
@@ -139,7 +144,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
              foreach (var warrior in detectedWarriors)
              {
-                 int damage = Random.Range(1, 15);
+                 int damage = Random.Range(0, 0);
                  warrior.life -= damage;
              }
         }
@@ -148,6 +153,12 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
             detectedWarriors = coneQuery.Query()
                 .OfType<Generic_Warrior>()
                 .Where(w => w.genericSo.Class == TypeOfWarriors.Dwarf );
+
+            foreach (var warrior in detectedWarriors)
+            {
+                int damage = Random.Range(50, 70);
+                warrior.life -= damage;
+            }
         }
         return detectedWarriors;
     }

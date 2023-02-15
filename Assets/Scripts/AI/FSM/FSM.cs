@@ -48,9 +48,9 @@ public class FSM <T>
 
 public static class State
 {
-    public static string Idle = "Idle";
-    public static string IdleAttack = "IdleAttack";
-    public static string Seek = "Seek";
-    public static string Attack = "Attack";
-    public static string Dead = "Dead";
+    public const string Idle = "Idle";
+    public const string IdleAttack = "IdleAttack";
+    public const string Seek = "Seek";
+    public const string Attack = "Attack";
+    public const string Dead = "Dead";
 }

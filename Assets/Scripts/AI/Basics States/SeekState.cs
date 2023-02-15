@@ -1,9 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
-using static UnityEngine.GraphicsBuffer;
-
 public class SeekState <T> : States <T>
 {
     private AI _ai;
