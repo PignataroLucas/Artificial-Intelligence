@@ -15,7 +15,7 @@ MonoBehaviour:
   AttackDamage: 1
   AttackRange: 1
   AttackRate: 1
-  Life: 200
+  Life: 300
   Speed: 1
   detectionRadius: 2
   Class: 0

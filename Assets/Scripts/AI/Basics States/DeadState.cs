@@ -9,6 +9,6 @@ public class DeadState <T> : States<T>
     {
         _ai.animator.SetBool("deadth",true);
         _ai.animator.SetBool("canAttack",false);
-        _ai.animator.SetBool("ToIddleAttack",false);
+        _ai.animator.SetBool("ToIdleAttack",false);
     }
 }

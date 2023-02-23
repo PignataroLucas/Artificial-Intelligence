@@ -18,10 +18,10 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
     public GameObject dwarf,goblin;
     private int currentIndexDwarf = 0;
-    private int _maxDwarfToSpawnDwarf = 5;
+    private int _maxDwarfToSpawnDwarf = 1;
 
     private int currentIndexGoblin = 0;
-    private int _maxGoblinToSpawn = 5;
+    private int _maxGoblinToSpawn = 2;
 
    
 
@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
     public void OnUpdate()
     {
-        if (currentIndexDwarf == 4) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
-        if (currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomGoblin); }
+        if (currentIndexDwarf == 1) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
+        if (currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomGoblin); }
 
-        if (currentIndexDwarf == 4 && currentIndexGoblin == 4) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
+        if (currentIndexDwarf == 1 && currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
     }
     public void OnEnableListenerSubscriptions()
     {

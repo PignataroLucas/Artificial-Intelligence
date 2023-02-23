@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+
+public struct UnitStat
+{
+    public int AttackDamage;
+    public int Life;
+    public float Speed;
+}
 public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 {
 
@@ -15,6 +22,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     protected DeadState<string> _deadState;
 
     public Generic_Unit_SO genericSo;
+    public UnitStat UnitStat;
 
     public Animator animator;
 
@@ -28,7 +36,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     
     public ConeQuery coneQuery;
 
-    public int life;
+    
 
     public event System.Action<IGridEntity> OnMove;
 
@@ -57,10 +65,19 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
         Fsm = new FSM<string>(_idleState);
 
-        navMeshAgent = GetComponent<NavMeshAgent>(); 
-        
-        life = Random.Range(20,40);
-        
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+
+
+        UnitStat = new UnitStat
+        {
+            AttackDamage = genericSo.AttackDamage,
+            Life = genericSo.Life,
+            Speed = genericSo.Speed,
+        };
+
+
+
     }
     public virtual void OnUpdate() { }
     private void TransitionState(Hashtable data)
@@ -144,8 +161,8 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
              foreach (var warrior in detectedWarriors)
              {
-                 int damage = Random.Range(0, 0);
-                 warrior.life -= damage;
+                 int damage = Random.Range(50,100);
+                 warrior.UnitStat.Life -= damage;
              }
         }
         else if (genericSo.Class == TypeOfWarriors.Goblin)
@@ -156,8 +173,8 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
             foreach (var warrior in detectedWarriors)
             {
-                int damage = Random.Range(50, 70);
-                warrior.life -= damage;
+                //int damage = Random.Range(300, 400);
+                //warrior.UnitStat.Life -= damage;
             }
         }
         return detectedWarriors;
@@ -169,7 +186,4 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         Gizmos.DrawWireSphere(transform.position, genericSo.detectionRadius);
 
     }
-
-    
-    
 }

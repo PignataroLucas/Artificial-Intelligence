@@ -9,7 +9,7 @@ public class FSM <T>
     States<T> _currentState;
     List<States<T>> _states = new List<States<T>>();
 
-    public States<T> current { get { return _currentState; } }
+    public States<T> Current { get { return _currentState; } }
 
     private bool _init;
 

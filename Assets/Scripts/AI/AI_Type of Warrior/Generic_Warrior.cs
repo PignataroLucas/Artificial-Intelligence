@@ -16,10 +16,9 @@ public class Generic_Warrior : AI
             enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, dwarf);
             target = GameObject.FindGameObjectsWithTag("Dwarf");
         }
-
         
         //remplazar por consulta directa desde los estados.
-        if (this.life <= 0)
+        if (UnitStat.Life <= 0)
         {
             Fsm = new FSM<string>(_deadState);
         }
