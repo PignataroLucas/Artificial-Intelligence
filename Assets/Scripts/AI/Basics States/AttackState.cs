@@ -47,8 +47,18 @@ public class AttackState <T> : States<T>
         { GameplayHashtableParameters.Agent.ToString(), _ai }
         });
 
-       _ai.animator.SetBool("canAttack", false);
-       _ai.animator.SetBool("ToIdleAttack", true);
+        if (_ai.canToIdleAttack)
+        {
+            _ai.animator.SetBool("canAttack", false);
+            _ai.animator.SetBool("ToIdleAttack", true);
+        }
+        else 
+        {
+            _ai.animator.SetBool("canAttack", false);
+            _ai.animator.SetBool("ToIdleAttack", false);
+            _ai.animator.SetBool("canIdle", true);
+        }
+      
     }
     
     public IEnumerable<Generic_Warrior> Detect()
@@ -64,6 +74,16 @@ public class AttackState <T> : States<T>
             {
                 int damage = Random.Range(300,400);
                 warrior.UnitStat.Life -= damage;
+                if (warrior.UnitStat.Life <= 0)
+                {
+                    _ai.animator.SetBool("canAttack", false);
+                    _ai.animator.SetBool("ToIdleAttack", false);
+                    _ai.canToIdleAttack = false;
+                    EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+                        { GameplayHashtableParameters.ChangeState.ToString(),State.Idle},
+                        { GameplayHashtableParameters.Agent.ToString(), _ai }
+                    });
+                }
             }
         }
         else if (_ai.genericSo.Class == TypeOfWarriors.Goblin)
@@ -76,6 +96,8 @@ public class AttackState <T> : States<T>
             { 
                 //int damage = Random.Range(300, 400);
                 //warrior.UnitStat.Life -= damage;
+                //_ai.target.Remove(_ai.enemyTarget);
+                //NewTarget();
             }
         }
         return detectedWarriors;

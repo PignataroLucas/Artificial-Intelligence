@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Generic_Warrior : AI 
@@ -5,18 +6,18 @@ public class Generic_Warrior : AI
     public override void OnUpdate()
     {
         Fsm.OnUpdate();
-        //Debug.Log(fsm.current);
+        //Debug.Log(Fsm.Current);
         if (genericSo.Class == TypeOfWarriors.Dwarf)
         {
             enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, goblin);
-            target = GameObject.FindGameObjectsWithTag("Goblin");           
+            target = new List<GameObject>(GameObject.FindGameObjectsWithTag("Goblin"));
         }
         else if (genericSo.Class == TypeOfWarriors.Goblin)
         {
             enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, dwarf);
-            target = GameObject.FindGameObjectsWithTag("Dwarf");
+            target = new List<GameObject>(GameObject.FindGameObjectsWithTag("Dwarf"));
         }
-        Debug.Log(UnitStat.Life);
+
         if (enemyTarget != null)
         {
             transform.LookAt(enemyTarget.transform.position);

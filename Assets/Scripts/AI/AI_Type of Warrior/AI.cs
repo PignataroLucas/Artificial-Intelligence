@@ -28,7 +28,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
     public LayerMask goblin,dwarf;
 
-    public GameObject [] target;
+    public List <GameObject> target;
     public GameObject enemyTarget;
     public Collider [] enemiesInRandius; 
 
@@ -36,7 +36,10 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     
     public ConeQuery coneQuery;
 
-    
+
+    public int _currentTargetIndex = -1;
+
+    public bool canToIdleAttack;
 
     public event System.Action<IGridEntity> OnMove;
 
@@ -61,6 +64,8 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         _attackState.SetTransition(State.IdleAttack, _idleAttackState);
         _idleState.SetTransition(State.Seek, _seekState);
         _seekState.SetTransition(State.IdleAttack, _idleAttackState);
+        _attackState.SetTransition(State.Idle, _idleState);
+        _idleAttackState.SetTransition(State.Attack, _idleState);
         
 
         Fsm = new FSM<string>(_idleState);
@@ -76,7 +81,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
             Speed = genericSo.Speed,
         };
 
-
+        canToIdleAttack = true;
 
     }
     public virtual void OnUpdate() { }
@@ -104,6 +109,7 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     }
     public void Attack()
     {
+        animator.SetBool("canIdle",true);
         _idleAttackState.ToAttackState();
     }
     public void ToIdleAttack()
@@ -126,12 +132,14 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         EventManager.StartListening(GenericEvents.ChangeState, TransitionState);
         EventManager.StartListening(GenericEvents.RandomTargets, SetRandomTarget);
         EventManager.StartListening(GenericEvents.ChangeToSeekState, ChangeToSeekState);
+       
     }
     public void OnDisableListenerSubscriptions()
     {
         EventManager.StopListering(GenericEvents.ChangeState, TransitionState);
         EventManager.StopListering(GenericEvents.RandomTargets, SetRandomTarget);
         EventManager.StopListering(GenericEvents.ChangeToSeekState, ChangeToSeekState);
+        
     }
     private void SetRandomTarget(Hashtable obj)
     {
@@ -139,16 +147,18 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         {            
             if (enemyTarget == null)
             {
-                int randomIndex = Random.Range(0, target.Length);
+                int randomIndex = Random.Range(0, target.Count);
                 enemyTarget = target[randomIndex];
+                _currentTargetIndex = 0;
             }
         }
         else if (genericSo.Class == TypeOfWarriors.Goblin)
         {
             if (enemyTarget == null)
             {
-                int randomIndex = Random.Range(0, target.Length);
+                int randomIndex = Random.Range(0, target.Count);
                 enemyTarget = target[randomIndex];
+                _currentTargetIndex = 0;
             }
         }
     }

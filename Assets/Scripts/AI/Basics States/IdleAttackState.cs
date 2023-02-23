@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using UnityEngine;
 
 public class IdleAttackState <T> : States<T>
 {
@@ -9,7 +11,6 @@ public class IdleAttackState <T> : States<T>
     {
         _ai = ai;
     }
-
     public override void OnEnter()
     {
         SetAnimations();        
@@ -38,16 +39,14 @@ public class IdleAttackState <T> : States<T>
             });
         }
     }
-
     public  void ToAttackState()
     {
         EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
-        { GameplayHashtableParameters.ChangeState.ToString(),State.Attack},
-        { GameplayHashtableParameters.Agent.ToString(), _ai }
+            { GameplayHashtableParameters.ChangeState.ToString(),State.Attack},
+            { GameplayHashtableParameters.Agent.ToString(), _ai }
         });
         _ai.animator.SetBool("ToIdleAttack", false);
         _ai.animator.SetBool("canIdle", false);
+        
     }
-
-   
 }
