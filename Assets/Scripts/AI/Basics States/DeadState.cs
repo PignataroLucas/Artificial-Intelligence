@@ -1,4 +1,3 @@
-
 public class DeadState <T> : States<T>
 {
     private AI _ai;

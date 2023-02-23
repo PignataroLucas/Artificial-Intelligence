@@ -95,6 +95,9 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     {
 
     }
+
+    #region AnimationEvents
+
     public void LoopAnimations() 
     {       
         _idleState.SetTransitionAnim();  
@@ -107,6 +110,12 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
     {
         _attackState.ToIdleAttackState();
     }
+    public void Detect()
+    {
+        _attackState.Detect();
+    }
+
+    #endregion
     private void OnDisable()
     {
         UpdateManager.Instance.RemoveUpdate(this);
@@ -149,35 +158,6 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
             { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
             { GameplayHashtableParameters.Agent.ToString(), this }
             });
-    }
-    public IEnumerable<Generic_Warrior> Detect()
-    {
-        IEnumerable<Generic_Warrior> detectedWarriors = Enumerable.Empty<Generic_Warrior>();
-        if (genericSo.Class == TypeOfWarriors.Dwarf)
-        {
-             detectedWarriors = coneQuery.Query()
-                 .OfType<Generic_Warrior>()
-                 .Where(w => w.genericSo.Class == TypeOfWarriors.Goblin );
-
-             foreach (var warrior in detectedWarriors)
-             {
-                 int damage = Random.Range(50,100);
-                 warrior.UnitStat.Life -= damage;
-             }
-        }
-        else if (genericSo.Class == TypeOfWarriors.Goblin)
-        {
-            detectedWarriors = coneQuery.Query()
-                .OfType<Generic_Warrior>()
-                .Where(w => w.genericSo.Class == TypeOfWarriors.Dwarf );
-
-            foreach (var warrior in detectedWarriors)
-            {
-                //int damage = Random.Range(300, 400);
-                //warrior.UnitStat.Life -= damage;
-            }
-        }
-        return detectedWarriors;
     }
     public Vector3 Position { get => transform.position; set => transform.position = value; }
     private void OnDrawGizmosSelected()

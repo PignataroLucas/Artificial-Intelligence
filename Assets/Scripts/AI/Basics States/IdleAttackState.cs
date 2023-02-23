@@ -22,6 +22,23 @@ public class IdleAttackState <T> : States<T>
         _ai.animator.SetBool("canIdle", false);
         _ai.animator.SetBool("CanRun", false);
     }
+    
+    public override void OnUpdate()
+    {
+        CheckStatus();
+    }
+
+    private void CheckStatus()
+    {
+        if (_ai.UnitStat.Life <= 0)
+        {
+            EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+                { GameplayHashtableParameters.ChangeState.ToString(),State.Dead},
+                { GameplayHashtableParameters.Agent.ToString(), _ai }
+            });
+        }
+    }
+
     public  void ToAttackState()
     {
         EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
@@ -32,5 +49,5 @@ public class IdleAttackState <T> : States<T>
         _ai.animator.SetBool("canIdle", false);
     }
 
-    
+   
 }
