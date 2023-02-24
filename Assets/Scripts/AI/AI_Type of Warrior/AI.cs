@@ -38,8 +38,10 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
 
     public int _currentTargetIndex = -1;
-
     public bool canToIdleAttack;
+    
+    [SerializeField] public List<GameObject> dwarfUnits = new List<GameObject>();
+    [SerializeField] public List<GameObject> goblinUnits = new List<GameObject>();
 
     public event System.Action<IGridEntity> OnMove;
 
@@ -58,21 +60,21 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         _seekState = new SeekState<string>(this);
         _deadState = new DeadState<string>(this);
         
-        _attackState.SetTransition(State.Dead,_deadState);
-        _idleAttackState.SetTransition(State.Dead,_deadState);
-        _idleAttackState.SetTransition(State.Attack, _attackState);
-        _attackState.SetTransition(State.IdleAttack, _idleAttackState);
+        
         _idleState.SetTransition(State.Seek, _seekState);
         _seekState.SetTransition(State.IdleAttack, _idleAttackState);
-        _attackState.SetTransition(State.Idle, _idleState);
-        _idleAttackState.SetTransition(State.Attack, _idleState);
+        _idleAttackState.SetTransition(State.Dead,_deadState);
+        _idleAttackState.SetTransition(State.Attack, _attackState);
+        _attackState.SetTransition(State.Dead,_deadState);
+        _attackState.SetTransition(State.IdleAttack, _idleAttackState);
+        _attackState.SetTransition(State.Idle,_idleState);
+        _attackState.SetTransition(State.Seek,_seekState);
+        
         
 
         Fsm = new FSM<string>(_idleState);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-
-
 
         UnitStat = new UnitStat
         {
@@ -147,8 +149,8 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         {            
             if (enemyTarget == null)
             {
-                int randomIndex = Random.Range(0, target.Count);
-                enemyTarget = target[randomIndex];
+                int randomIndex = Random.Range(0, goblinUnits.Count);
+                enemyTarget = goblinUnits[randomIndex];
                 _currentTargetIndex = 0;
             }
         }
@@ -169,11 +171,25 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
             { GameplayHashtableParameters.Agent.ToString(), this }
             });
     }
+    
+    /*public void AddTarget(GameObject _target)
+    {
+        //this.target.Add(_target);   
+    }*/
+    
+    public void SetDwarfUnits(List<GameObject> newUnits) 
+    {
+        dwarfUnits = newUnits;
+    }
+    public void SetGoblinUnits(List<GameObject> newUnits) 
+    {
+        goblinUnits = newUnits;
+    }
+    
     public Vector3 Position { get => transform.position; set => transform.position = value; }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, genericSo.detectionRadius);
-
     }
 }

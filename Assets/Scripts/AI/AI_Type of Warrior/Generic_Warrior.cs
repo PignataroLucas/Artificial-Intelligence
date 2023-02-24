@@ -6,11 +6,12 @@ public class Generic_Warrior : AI
     public override void OnUpdate()
     {
         Fsm.OnUpdate();
-        //Debug.Log(Fsm.Current);
+        
         if (genericSo.Class == TypeOfWarriors.Dwarf)
         {
+            Debug.Log(Fsm.Current);
             enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, goblin);
-            target = new List<GameObject>(GameObject.FindGameObjectsWithTag("Goblin"));
+            //target = new List<GameObject>(GameObject.FindGameObjectsWithTag("Goblin"));
         }
         else if (genericSo.Class == TypeOfWarriors.Goblin)
         {

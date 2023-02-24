@@ -1,4 +1,9 @@
 using System.Collections;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.Windows;
+using Input = UnityEngine.Input;
+
 public class SeekState <T> : States <T>
 {
     private AI _ai;
@@ -17,8 +22,7 @@ public class SeekState <T> : States <T>
     }
 
     public override void OnUpdate()
-    {       
-
+    {
         if (_ai.enemiesInRandius.Length > 0) 
         {            
             EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
@@ -32,7 +36,6 @@ public class SeekState <T> : States <T>
 
         _ai.transform.LookAt(_ai.enemyTarget.transform.position);
         _ai.navMeshAgent.destination = _ai.enemyTarget.transform.position;
-
     }
 
 }

@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour , IUpdate , IEventListener
 {
-
-
     [Header("PositionsToSpawnReferenceDwarf")]
     [SerializeField] private GameObject _dwarfsTransformParent;
     [SerializeField] private List<Transform> _dwarfPositionSpawn;
@@ -18,12 +17,14 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
     public GameObject dwarf,goblin;
     private int currentIndexDwarf = 0;
-    private int _maxDwarfToSpawnDwarf = 1;
+    private int _maxDwarfToSpawnDwarf = 2;
 
     private int currentIndexGoblin = 0;
     private int _maxGoblinToSpawn = 2;
-
-   
+    
+    [SerializeField] private List<GameObject> dwarfUnits = new List<GameObject>();
+    [SerializeField] private List<GameObject> goblinUnits = new List<GameObject>();
+    private AI _ai;
 
     private void Awake()
     {
@@ -42,10 +43,10 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
     public void OnUpdate()
     {
-        if (currentIndexDwarf == 1) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
+        if (currentIndexDwarf == 2) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
         if (currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomGoblin); }
 
-        if (currentIndexDwarf == 1 && currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
+        if (currentIndexDwarf == 2 && currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
     }
     public void OnEnableListenerSubscriptions()
     {
@@ -66,9 +67,13 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
             int randomIndex = Random.Range(0, _dwarfPositionSpawn.Count);
             Vector3 spawnPos = _dwarfPositionSpawn[randomIndex].position;
             GameObject dwarfInstantiate = Instantiate(dwarf, spawnPos, Quaternion.identity);
+            dwarfUnits.Add(dwarfInstantiate);
             dwarfInstantiate.transform.parent = _dwarfPositionSpawn[randomIndex];
             _dwarfPositionSpawn.RemoveAt(randomIndex);
             currentIndexDwarf++;
+            
+            _ai = FindObjectOfType<AI>();
+            _ai.SetDwarfUnits(dwarfUnits);
         }        
     }
     private void BuyUnitGoblin(Hashtable obj)
@@ -78,9 +83,13 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
             int randomIndex = Random.Range(0, _goblinPositionSpawn.Count);
             Vector3 spawnPos = _goblinPositionSpawn[randomIndex].position;
             GameObject goblinInstantiate =  Instantiate(goblin, spawnPos, Quaternion.identity);
+            goblinUnits.Add(goblinInstantiate);
             goblinInstantiate.transform.parent =  _goblinPositionSpawn[randomIndex];
             _goblinPositionSpawn.RemoveAt(randomIndex);
             currentIndexGoblin++;
+            
+            FindObjectOfType<AI>();
+            _ai.SetGoblinUnits(goblinUnits);
         }        
     }
     private void StartBattle(Hashtable obj)
@@ -89,5 +98,4 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
         EventTriggers.TriggerEvent(GenericEvents.DisableStartButtom);
         EventTriggers.TriggerEvent(GenericEvents.ChangeToSeekState);
     }
-
 }

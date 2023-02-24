@@ -6,22 +6,26 @@ using UnityEngine;
 public class AttackState <T> : States<T>
 {
     private AI _ai;
-
     public AttackState (AI ai) 
     {
         _ai = ai; 
     }
-
     public override void OnEnter()
     {
         SetAnimsTransitions();
     }
-
     public override void OnUpdate()
     {
         CheckStatus();
-    }
 
+        if (_ai.goblinUnits.Count == 0)
+        {
+            EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+                { GameplayHashtableParameters.ChangeState.ToString(),State.Idle},
+                { GameplayHashtableParameters.Agent.ToString(), _ai }
+            });
+        }
+    }
     private void CheckStatus()
     {
         if (_ai.UnitStat.Life <= 0)
@@ -32,7 +36,6 @@ public class AttackState <T> : States<T>
             });
         }
     }
-
     public void SetAnimsTransitions()
     {
         _ai.animator.SetInteger("attackNum", Random.Range(0, 4));
@@ -58,9 +61,7 @@ public class AttackState <T> : States<T>
             _ai.animator.SetBool("ToIdleAttack", false);
             _ai.animator.SetBool("canIdle", true);
         }
-      
     }
-    
     public IEnumerable<Generic_Warrior> Detect()
     {
         IEnumerable<Generic_Warrior> detectedWarriors = Enumerable.Empty<Generic_Warrior>();
@@ -74,13 +75,16 @@ public class AttackState <T> : States<T>
             {
                 int damage = Random.Range(300,400);
                 warrior.UnitStat.Life -= damage;
-                if (warrior.UnitStat.Life <= 0)
+                if (warrior.UnitStat.Life <= 0 && _ai.goblinUnits.Count > 0)
                 {
+                    _ai.goblinUnits.Remove(_ai.enemyTarget);
+                    int randomIndex = Random.Range(0, _ai.goblinUnits.Count);
+                    _ai.enemyTarget = _ai.goblinUnits[randomIndex];
                     _ai.animator.SetBool("canAttack", false);
                     _ai.animator.SetBool("ToIdleAttack", false);
                     _ai.canToIdleAttack = false;
                     EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
-                        { GameplayHashtableParameters.ChangeState.ToString(),State.Idle},
+                        { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
                         { GameplayHashtableParameters.Agent.ToString(), _ai }
                     });
                 }
