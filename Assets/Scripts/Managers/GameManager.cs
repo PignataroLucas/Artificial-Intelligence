@@ -22,10 +22,8 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
     private int currentIndexGoblin = 0;
     private int _maxGoblinToSpawn = 2;
     
-    [SerializeField] private List<GameObject> dwarfUnits = new List<GameObject>();
+    [SerializeField] public List<GameObject> dwarfUnits = new List<GameObject>();
     [SerializeField] private List<GameObject> goblinUnits = new List<GameObject>();
-    private AI _ai;
-
     private void Awake()
     {
         OnEnableListenerSubscriptions();
@@ -38,15 +36,21 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
 
         _goblinPositionSpawn = _goblinTransformParent.GetComponentsInChildren<Transform>().ToList();
         _goblinPositionSpawn.Remove(_goblinPositionSpawn.First());
+
+        
     }
 
 
     public void OnUpdate()
     {
+       
+        
         if (currentIndexDwarf == 2) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomDwarf); }
         if (currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.DisableButtomGoblin); }
 
-        if (currentIndexDwarf == 2 && currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }       
+        if (currentIndexDwarf == 2 && currentIndexGoblin == 2) { EventTriggers.TriggerEvent(GenericEvents.TurnOnStartButtom); }  
+        
+        
     }
     public void OnEnableListenerSubscriptions()
     {
@@ -72,8 +76,14 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
             _dwarfPositionSpawn.RemoveAt(randomIndex);
             currentIndexDwarf++;
             
-            _ai = FindObjectOfType<AI>();
-            _ai.SetDwarfUnits(dwarfUnits);
+            foreach (AI ai in FindObjectsOfType<AI>())
+            {
+                if (ai.genericSo.Class == TypeOfWarriors.Dwarf)
+                {
+                    //ai.SetDwarfUnits(dwarfUnits);
+                    ai.SetGoblinUnits(goblinUnits);
+                }
+            }
         }        
     }
     private void BuyUnitGoblin(Hashtable obj)
@@ -88,8 +98,14 @@ public class GameManager : MonoBehaviour , IUpdate , IEventListener
             _goblinPositionSpawn.RemoveAt(randomIndex);
             currentIndexGoblin++;
             
-            FindObjectOfType<AI>();
-            _ai.SetGoblinUnits(goblinUnits);
+            foreach (AI ai in FindObjectsOfType<AI>())
+            {
+                if (ai.genericSo.Class == TypeOfWarriors.Goblin)
+                {
+                    //ai.SetGoblinUnits(goblinUnits);
+                    ai.SetDwarfUnits(dwarfUnits);
+                }
+            }
         }        
     }
     private void StartBattle(Hashtable obj)

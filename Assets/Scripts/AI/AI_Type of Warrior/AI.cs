@@ -28,10 +28,9 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
 
     public LayerMask goblin,dwarf;
 
-    public List <GameObject> target;
+    //public List <GameObject> target;
     public GameObject enemyTarget;
-    public Collider [] enemiesInRandius; 
-
+    public Collider [] enemiesInRandius;
     public NavMeshAgent navMeshAgent;
     
     public ConeQuery coneQuery;
@@ -158,8 +157,8 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
         {
             if (enemyTarget == null)
             {
-                int randomIndex = Random.Range(0, target.Count);
-                enemyTarget = target[randomIndex];
+                int randomIndex = Random.Range(0, dwarfUnits.Count);
+                enemyTarget = dwarfUnits[randomIndex];
                 _currentTargetIndex = 0;
             }
         }
@@ -171,11 +170,6 @@ public abstract class AI : MonoBehaviour, IUpdate, IEventListener, IGridEntity
             { GameplayHashtableParameters.Agent.ToString(), this }
             });
     }
-    
-    /*public void AddTarget(GameObject _target)
-    {
-        //this.target.Add(_target);   
-    }*/
     
     public void SetDwarfUnits(List<GameObject> newUnits) 
     {

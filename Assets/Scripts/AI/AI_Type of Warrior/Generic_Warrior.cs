@@ -9,21 +9,22 @@ public class Generic_Warrior : AI
         
         if (genericSo.Class == TypeOfWarriors.Dwarf)
         {
-            Debug.Log(Fsm.Current);
             enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, goblin);
-            //target = new List<GameObject>(GameObject.FindGameObjectsWithTag("Goblin"));
+            Debug.Log("Vida de Dwarf : "  + UnitStat.Life);
+            Debug.Log("Estado actual de Dwarf :  " + Fsm.Current);
         }
         else if (genericSo.Class == TypeOfWarriors.Goblin)
         {
             enemiesInRandius = Physics.OverlapSphere(transform.position, genericSo.detectionRadius, dwarf);
-            target = new List<GameObject>(GameObject.FindGameObjectsWithTag("Dwarf"));
+            Debug.Log("Estado actual de Goblin :  " + Fsm.Current);
         }
 
         if (enemyTarget != null)
         {
             transform.LookAt(enemyTarget.transform.position);
-            //return;
         }
+        
+        
         
     }
 }

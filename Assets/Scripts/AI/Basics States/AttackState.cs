@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class AttackState <T> : States<T>
@@ -18,13 +19,22 @@ public class AttackState <T> : States<T>
     {
         CheckStatus();
 
-        if (_ai.goblinUnits.Count == 0)
+        if (_ai.genericSo.Class == TypeOfWarriors.Dwarf && _ai.goblinUnits.Count == 0)
+        {
+            EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+                { GameplayHashtableParameters.ChangeState.ToString(),State.Idle},
+                { GameplayHashtableParameters.Agent.ToString(), _ai }
+            });
+        }else if (_ai.genericSo.Class == TypeOfWarriors.Goblin && _ai.dwarfUnits.Count == 0)
         {
             EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
                 { GameplayHashtableParameters.ChangeState.ToString(),State.Idle},
                 { GameplayHashtableParameters.Agent.ToString(), _ai }
             });
         }
+        
+        
+        
     }
     private void CheckStatus()
     {
@@ -73,7 +83,7 @@ public class AttackState <T> : States<T>
 
             foreach (var warrior in detectedWarriors)
             {
-                int damage = Random.Range(300,400);
+                int damage = Random.Range(0,0);
                 warrior.UnitStat.Life -= damage;
                 if (warrior.UnitStat.Life <= 0 && _ai.goblinUnits.Count > 0)
                 {
@@ -95,13 +105,24 @@ public class AttackState <T> : States<T>
             detectedWarriors = _ai.coneQuery.Query()
                 .OfType<Generic_Warrior>()
                 .Where(w => w.genericSo.Class == TypeOfWarriors.Dwarf );
-
+                 
             foreach (var warrior in detectedWarriors)
-            { 
-                //int damage = Random.Range(300, 400);
-                //warrior.UnitStat.Life -= damage;
-                //_ai.target.Remove(_ai.enemyTarget);
-                //NewTarget();
+            {
+                int damage = Random.Range(300,400);
+                warrior.UnitStat.Life -= damage;
+                if (warrior.UnitStat.Life <= 0 && _ai.dwarfUnits.Count > 0)
+                {
+                    _ai.dwarfUnits.Remove(_ai.enemyTarget);
+                    int randomIndex = Random.Range(0, _ai.dwarfUnits.Count);
+                    _ai.enemyTarget = _ai.dwarfUnits[randomIndex];
+                    _ai.animator.SetBool("canAttack", false);
+                    _ai.animator.SetBool("ToIdleAttack", false);
+                    _ai.canToIdleAttack = false;
+                    EventManager.TriggerEvent(GenericEvents.ChangeState, new Hashtable() {
+                        { GameplayHashtableParameters.ChangeState.ToString(),State.Seek},
+                        { GameplayHashtableParameters.Agent.ToString(), _ai }
+                    });
+                }
             }
         }
         return detectedWarriors;
